@@ -1,0 +1,1361 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f8f5ee" />
+  <meta name="description" content="어른 토끼와 새끼 토끼가 늘어나는 과정을 월별로 살펴보는 피보나치 수열 수학 실험실" />
+  <title>토끼들의 시간 여행 — 피보나치 수열 실험실</title>
+  <style>
+:root{--ink:#273a32;--muted:#78857b;--deep:#315544;--green:#668c67;--light-green:#e5f0e3;--peach:#ef9e86;--peach-light:#fff0e9;--cream:#f8f5ee;--line:#e9e8df;--white:#fffefa;--shadow:0 10px 36px rgba(42,61,46,.055)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--cream);color:var(--ink);font-family:'Nunito','Noto Sans KR',sans-serif;letter-spacing:-.03em}button,input{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,tr:focus-visible{outline:3px solid #eebf68;outline-offset:3px}.svg-defs{position:absolute;width:0;height:0;overflow:hidden}.app-shell{max-width:1512px;margin:auto;padding:0 44px}.topbar{height:86px;border-bottom:1px solid #e9e9df;display:flex;justify-content:space-between;align-items:center}.brand{display:flex;align-items:center;gap:12px;font-size:16px;font-weight:900;letter-spacing:-.025em}.brand-mark{width:41px;height:41px;border-radius:13px;background:#dfeadd;display:grid;place-items:center}.brand-mark svg{width:29px;height:34px}.brand-dot{color:#e79d72;padding:0 4px}.topbar-right{display:flex;align-items:center;gap:10px;color:#8d9a8c;font:700 11px 'DM Sans',sans-serif;letter-spacing:.11em}.topbar-sep{width:1px;height:13px;background:#d2d8d0;margin:0 5px}.live-dot{width:8px;height:8px;border-radius:50%;background:#83b48e;box-shadow:0 0 0 4px #e4f0df}.intro{position:relative;min-height:211px;display:flex;justify-content:space-between;align-items:center;padding:29px 0 24px}.intro-main{position:relative;z-index:1}.eyebrow{color:#9caa95;font:900 11px 'DM Sans','Noto Sans KR',sans-serif;letter-spacing:.17em;display:flex;align-items:center;gap:9px}.eyebrow-star{color:#d8a669;font-size:20px;line-height:1}.intro h1{margin:11px 0 9px;font-size:clamp(30px,3.2vw,49px);line-height:1.25;font-weight:900;letter-spacing:-.065em}.intro h1>span:first-child{color:#688b68}.title-sparkle{color:#eeb576;font-size:27px;vertical-align:top;margin-left:10px}.intro p{color:#7b877c;font-size:14px;font-weight:600;line-height:1.8;margin:0;letter-spacing:-.025em}.intro-deco{width:250px;height:170px;position:relative;margin-right:52px;align-self:stretch;flex:none;overflow:hidden}.intro-deco>svg{position:absolute;width:104px;height:123px;bottom:0;left:83px;transform:rotate(-7deg);z-index:2;filter:drop-shadow(0 8px 2px #c8d8c32e)}.deco-sun{width:102px;height:102px;border-radius:50%;background:#fbdfac;position:absolute;right:16px;top:17px;opacity:.7}.deco-leaf{position:absolute;font-size:40px;color:#d8e5c4}.leaf-one{left:30px;top:11px}.leaf-two{right:3px;bottom:0;color:#e0c9a0}.deco-cloud{position:absolute;background:#e5ebe0;border-radius:20px;width:70px;height:12px}.cloud-one{top:60px;left:30px}.cloud-two{bottom:27px;right:4px;width:39px}.dashboard{display:grid;grid-template-columns:minmax(0,1.54fr) minmax(365px,1fr);gap:24px;align-items:start}.main-column,.side-column{display:flex;flex-direction:column;gap:22px;min-width:0}.card{background:var(--white);border:1px solid #edeee6;border-radius:21px;box-shadow:var(--shadow)}.controls{padding:25px 28px 20px}.section-heading,.table-heading{display:flex;justify-content:space-between;align-items:center;gap:12px}.section-kicker{font:800 10px 'DM Sans',sans-serif;letter-spacing:.15em;color:#a5afa1;margin-bottom:6px}.section-heading h2,.table-heading h2{font-size:20px;font-weight:900;letter-spacing:-.055em;line-height:1.3;margin:0}.heading-emoji{font-size:16px}.text-button{border:0;background:transparent;color:#98a392;font-size:12px;font-weight:800;padding:9px}.text-button:hover{color:#436e50}.text-button span{font-size:18px;vertical-align:-1px;margin-right:4px}.inputs-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:22px}.control-field{min-width:0}.field-label{display:flex;align-items:center;font-size:12px;font-weight:800;color:#66786a;margin-bottom:9px;white-space:nowrap}.field-dot{display:inline-block;width:9px;height:9px;border-radius:50%;flex:none;margin-right:7px}.adult-dot{background:#83aa80}.baby-dot{background:#f0ae9e}.month-dot{background:#d9ba82}.input-unit{display:flex;align-items:center;height:57px;border:1.5px solid #e4e9dd;border-radius:12px;padding:0 13px;background:#fffefa;transition:border-color .2s}.input-unit:focus-within{border-color:#86a98b;box-shadow:0 0 0 3px #d6e7d933}.input-unit input{min-width:0;width:100%;border:0;background:transparent;outline:none;color:#334e3c;font:900 23px 'DM Sans',sans-serif;letter-spacing:-.04em;appearance:textfield}.input-unit input::-webkit-inner-spin-button,.input-unit input::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}.input-unit>span{color:#adb6a9;white-space:nowrap;font-weight:700;font-size:12px}.timeline-controls{border-top:1px dashed #e4e8df;padding-top:18px;margin-top:22px;display:flex;align-items:center;gap:15px}.timeline-label{font-size:13px;font-weight:900;color:#5c705e;white-space:nowrap}.small-icon{font-size:19px;vertical-align:-2px;margin-right:2px;color:#8ca88d}.stepper{height:52px;display:flex;align-items:center;border:1px solid #e4e9e0;background:#f5f8f2;border-radius:13px;padding:4px;gap:7px;margin-left:auto}.step-button{width:38px;height:40px;border:none;border-radius:9px;background:#fff;box-shadow:0 2px 5px #2f4c4010;color:#4c7458;font-size:25px;font-weight:500;line-height:1}.step-button:hover{background:#e5f0e6}.step-button:disabled{opacity:.35;cursor:default}.month-display{display:flex;align-items:baseline;justify-content:center;gap:5px;min-width:86px}.month-display strong{font:900 27px 'DM Sans',sans-serif;color:#355a42}.month-display span{font-size:12px;font-weight:800;color:#7f9682}.play-button{background:#3d684e;color:#fff;border:0;border-radius:12px;padding:0 17px;height:50px;font-size:13px;font-weight:800;white-space:nowrap;box-shadow:0 5px 13px #47725225;transition:transform .2s,background .2s}.play-button:hover{background:#30583f;transform:translateY(-1px)}.play-button span:first-child{font-size:12px;margin-right:6px}.field-hint{margin:13px 0 0;color:#a9b2a7;font-size:11px;font-weight:600}
+.meadow{padding:0;overflow:hidden}.meadow-header{background:#55765c;padding:23px 28px 25px;display:flex;justify-content:space-between;align-items:center;color:#fff}.light-kicker{color:#b9d1b9}.meadow-header h2{margin:0;font-size:21px;font-weight:900;letter-spacing:-.05em}.meadow-header h2 span{font-size:17px}.month-badge{text-align:center;transform:rotate(3deg);border:1px solid #aec7ac;border-radius:10px;padding:7px 13px;color:#f1f6e9}.month-badge span{display:block;font:700 8px 'DM Sans',sans-serif;letter-spacing:.14em}.month-badge strong{font:900 14px 'DM Sans',sans-serif;letter-spacing:.04em}.stats-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));padding:18px 19px;gap:10px;background:#fbfcf8}.stat{display:flex;align-items:center;gap:10px;padding:11px 9px;min-width:0;border-radius:13px}.stat-adult{background:#e8f1e6}.stat-baby{background:#fff0e9}.stat-total{background:#f1eee3}.stat-icon{flex:none;width:39px;height:45px;display:grid;place-items:center}.stat-icon svg{width:37px;height:43px}.stat>div:last-child{min-width:0}.stat span{display:block;color:#6c7b6a;font-size:11px;font-weight:800;white-space:nowrap}.stat strong{display:inline-block;max-width:100%;font:900 clamp(16px,2vw,26px) 'DM Sans','Noto Sans KR',sans-serif;letter-spacing:-.05em;color:#324f3b;overflow-wrap:anywhere}.stat small{color:#879689;font-size:10px;font-weight:800;margin-left:4px}.stat-baby strong{color:#9f665e}.stat-total strong{color:#786c4f}.total-icon{flex:none;display:grid;place-items:center;width:37px;height:40px;border-radius:50%;font-size:27px;font-weight:900;color:#a29b77;background:#e5e1d2}.garden-space{position:relative;min-height:470px;padding:20px 27px 35px;overflow:hidden;background:linear-gradient(#eef7ed 0%,#eef6e8 82%,#deebd5 82%,#deebd5 100%)}.garden-sun{position:absolute;top:17px;right:33px;width:45px;height:45px;background:#f6dba0;border-radius:50%;box-shadow:0 0 0 12px #f6dba023}.garden-cloud{position:absolute;top:39px;left:45%;background:#fffefa99;width:85px;height:15px;border-radius:20px}.gcloud-2{left:77%;top:101px;width:55px}.garden-title{position:relative;z-index:1;display:flex;align-items:center;gap:2px;font-size:13px;font-weight:900;color:#55775a;margin:3px 0 7px}.garden-title .field-dot{width:8px;height:8px}.garden-title-count{color:#91a591;font-size:11px;margin-left:7px;font-weight:700}.rabbit-garden{position:relative;z-index:1;display:flex;gap:6px;align-items:flex-end;align-content:flex-start;flex-wrap:wrap;min-height:104px;padding:7px 0 13px}.rabbit-token{display:flex;align-items:flex-end;justify-content:center;filter:drop-shadow(0 3px 0 #58845116);animation:pop .35s both;animation-delay:var(--delay,0ms);flex:none}.rabbit-token svg{width:53px;height:67px;display:block}.rabbit-token.baby svg{width:40px;height:52px}.rabbit-more{align-self:center;padding:8px 10px;border-radius:11px;background:#fffdf3dd;color:#648769;font-weight:900;font-size:13px;box-shadow:0 3px 8px #5e866011;letter-spacing:0}.rabbit-more.baby-more{color:#bf887d}.garden-divider{display:flex;gap:8px;align-items:center;color:#b9cdae;padding:5px 0 11px}.garden-divider span:nth-child(2){height:1px;border-top:1px dashed #c7ddc1;flex:1}.garden-ground{position:absolute;bottom:0;left:0;right:0;height:28px;background:repeating-linear-gradient(90deg,#7caf7b 0 2px,transparent 2px 20px);opacity:.12;mask-image:linear-gradient(to top,#000,transparent)}.garden-foot{padding:13px 22px;background:#f7faf5;border-top:1px solid #e5ede1;display:flex;align-items:flex-start;gap:8px;color:#8e9d8c;font-size:11px;line-height:1.5;font-weight:700}.info-dot{display:inline-grid;place-items:center;flex:none;width:15px;height:15px;border:1px solid #9caf9c;border-radius:50%;font:900 10px 'DM Sans',sans-serif;color:#90a192}.rule-card{border:1px solid #e7e9d9;border-radius:18px;background:#eeefe3;display:flex;align-items:flex-start;gap:15px;padding:22px 25px}.rule-icon{flex:none;font-size:24px}.rule-label{font-size:11px;letter-spacing:.04em;color:#8d9a80;font-weight:900}.rule-card h3{font-size:17px;font-weight:900;margin:4px 0 8px;letter-spacing:-.045em;color:#415c45}.rule-card p{margin:0;color:#7c8d7c;font-size:12px;font-weight:700;line-height:1.75}.formula{display:flex;flex-wrap:wrap;gap:8px;margin-top:13px}.formula span{padding:7px 10px;background:#fffdf4;border-radius:7px;color:#58715c;font-size:11px;font-weight:900}.rule-card .month-explainer{margin-top:12px;color:#54705a}
+.chart-card{padding:25px 25px 19px}.compact-heading{margin-bottom:23px}.chart-legend{display:flex;align-items:center;gap:18px;justify-content:flex-end;margin-bottom:9px;color:#869289;font-size:11px;font-weight:800}.chart-legend span{display:flex;align-items:center;gap:6px}.chart-legend i{display:inline-block;width:9px;height:9px;border-radius:50%}.legend-adult{background:#79a581}.legend-baby{background:#eaa28d}.chart-wrap{width:100%;overflow:hidden}.chart-wrap svg{display:block;width:100%;height:auto;overflow:visible}.chart-caption{margin:0;text-align:right;color:#a2afa4;font-size:11px;font-weight:700}.chart-grid{stroke:#e8ece7;stroke-width:1;stroke-dasharray:4 5}.chart-axis-label{font:700 12px 'DM Sans',sans-serif;fill:#a2afa4}.chart-month-label{font:800 11px 'DM Sans',sans-serif;fill:#98a79b}.chart-line-adult{stroke:#719f78;stroke-width:3.5;fill:none;stroke-linecap:round;stroke-linejoin:round}.chart-line-baby{stroke:#e9a08b;stroke-width:3.5;fill:none;stroke-linecap:round;stroke-linejoin:round}.chart-last-circle{stroke:#fffefa;stroke-width:3}.chart-empty{fill:#9ba89a;font:800 16px 'Nunito',sans-serif}.table-card{padding:24px 24px 17px}.table-heading h2{font-size:19px}.download-button{border:1px solid #e3eadf;background:#f5f9f3;color:#779078;border-radius:10px;padding:8px 10px;font-weight:900;font-size:12px;white-space:nowrap}.download-button:hover{background:#e6f0e2}.download-button span{font:900 18px 'DM Sans',sans-serif;margin-right:4px}.table-intro{font-size:11px;color:#9ba79c;font-weight:700;margin:12px 0 14px}.table-scroll{max-height:374px;overflow:auto;border:1px solid #e9eee6;border-radius:11px;scrollbar-color:#cddccc transparent;scrollbar-width:thin}table{width:100%;border-collapse:separate;border-spacing:0;table-layout:fixed}thead{position:sticky;top:0;z-index:2}th{background:#edf4eb;color:#6f876f;font-size:11px;font-weight:900;white-space:nowrap;padding:12px 5px;text-align:center}th:first-child{width:18%}th:last-child{width:25%}td{padding:12px 5px;color:#718171;text-align:center;font:800 12px 'DM Sans','Noto Sans KR',sans-serif;word-break:break-all;border-bottom:1px solid #f0f2ec}tbody tr{cursor:pointer}tbody tr:hover td{background:#fafbf5}tbody tr:last-child td{border-bottom:0}tbody tr.is-current td{background:#f0f6eb;color:#376849;font-weight:900}tbody tr.is-current td:first-child{box-shadow:inset 3px 0 #76a782}tbody tr.is-current:hover td{background:#eaf3e5}.table-footer{display:flex;justify-content:space-between;font-size:11px;color:#a6b1a5;font-weight:700;margin-top:12px}.table-footnote{display:flex;align-items:center;gap:6px}.table-foot-dot{width:7px;height:7px;border-radius:50%;background:#7daa81}.challenge-card{background:#e4ebdb;border-radius:17px;padding:21px 25px;position:relative;overflow:hidden}.challenge-card:after{content:'✿';position:absolute;right:-13px;bottom:-45px;color:#d2dfc4;font-size:130px;line-height:1;pointer-events:none}.challenge-title{color:#557055;font-weight:900;font-size:14px;position:relative;z-index:1}.challenge-title span{color:#bb9f65;font-size:18px}.challenge-card p{color:#718470;font-size:12px;font-weight:700;line-height:1.65;max-width:330px;position:relative;z-index:1}.challenge-card button{position:relative;z-index:1;border:none;background:#f8faf1;border-radius:8px;color:#507b58;padding:10px 14px;font-size:11px;font-weight:900}.challenge-card button span{margin-left:8px}.challenge-card button:hover{background:#fff}footer{display:flex;justify-content:center;gap:10px;align-items:center;margin:38px 0 30px;color:#b3bcb0;font:800 10px 'DM Sans','Noto Sans KR',sans-serif;letter-spacing:.09em}footer span{color:#e1bd91;font-size:17px}@keyframes pop{from{opacity:0;transform:scale(.65) translateY(10px)}to{opacity:1;transform:scale(1) translateY(0)}}@media(max-width:1150px){.app-shell{padding:0 25px}.dashboard{grid-template-columns:minmax(0,1.35fr) minmax(340px,1fr);gap:17px}.main-column,.side-column{gap:17px}.controls{padding:22px}.timeline-controls{flex-wrap:wrap}.timeline-label{width:100%}.stepper{margin-left:0}.stat{gap:4px;padding:9px 5px}.stat-icon{width:32px}.stat-icon svg{width:29px}.total-icon{width:30px;font-size:22px}.stat span{font-size:10px}.garden-space{padding-left:21px;padding-right:21px}}@media(max-width:900px){.dashboard{grid-template-columns:1fr}.intro-deco{margin-right:10px}.side-column{display:grid;grid-template-columns:1fr 1fr;align-items:start}.challenge-card{grid-column:1/-1}.chart-card,.table-card{height:100%}.table-scroll{max-height:370px}.stat{justify-content:center}.stat-icon{width:44px}.stat-icon svg{width:36px}.total-icon{width:40px}}@media(max-width:620px){.app-shell{padding:0 15px}.topbar{height:66px}.brand{font-size:13px}.brand-mark{width:36px;height:36px}.topbar-right{font-size:0;gap:5px}.topbar-right .live-dot{width:7px;height:7px}.topbar-sep{display:none}.intro{padding:29px 0 23px;min-height:190px}.intro h1{font-size:34px;white-space:nowrap}.title-sparkle{font-size:18px;margin-left:5px}.intro p{font-size:12px;line-height:1.75;max-width:330px}.desktop-break{display:none}.intro-deco{position:absolute;right:-14px;bottom:-7px;opacity:.33;width:150px;height:135px;margin:0}.intro-deco>svg{left:46px;width:80px;height:100px}.deco-sun{width:70px;height:70px}.dashboard{gap:14px}.main-column,.side-column{gap:14px}.side-column{display:flex}.controls{padding:22px 17px 17px}.section-heading h2{font-size:18px}.inputs-row{gap:8px}.field-label{font-size:10px}.field-dot{width:7px;height:7px;margin-right:4px}.input-unit{height:52px;padding:0 9px}.input-unit input{font-size:22px}.input-unit>span{font-size:10px}.timeline-controls{gap:9px}.timeline-label{width:100%}.stepper{margin-right:auto}.play-button{padding:0 12px}.field-hint{font-size:10px}.meadow-header{padding:21px}.stats-row{padding:10px;gap:5px}.stat{display:block;text-align:center;padding:9px 4px}.stat-icon,.total-icon{margin:0 auto 4px}.stat-icon{height:38px}.stat-icon svg{height:37px}.stat strong{font-size:19px}.stat small{font-size:9px}.garden-space{padding:18px 16px 29px;min-height:425px}.rabbit-garden{gap:2px;min-height:100px}.rabbit-token svg{width:43px;height:56px}.rabbit-token.baby svg{width:35px;height:45px}.rule-card{padding:18px 15px;gap:9px}.rule-icon{font-size:20px}.rule-card h3{font-size:15px}.formula span{font-size:10px}.chart-card,.table-card{padding:22px 17px 17px}.table-scroll{max-height:330px}footer{font-size:9px;margin:28px 0}}
+/* Individual identities: each rabbit keeps the same ID as it grows. */
+.rabbit-token{appearance:none;position:relative;display:flex;flex-direction:column;align-items:center;gap:2px;border:1.5px solid transparent;background:transparent;border-radius:10px;padding:3px 3px 5px;min-width:52px;transition:background .15s,border-color .15s,transform .15s}
+.rabbit-token:hover{background:#ffffffa9;transform:translateY(-3px)}
+.rabbit-token.is-selected{background:#fff9dc;border-color:#e3b85d;box-shadow:0 0 0 3px #f6d88d5e}
+.rabbit-token.is-related{background:#fffaec;border-color:#d2bd87}
+.rabbit-id{display:block;max-width:69px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;background:#ffffffb8;border-radius:8px;padding:2px 5px;color:#5b8060;font:900 10px 'DM Sans','Noto Sans KR',sans-serif;letter-spacing:0}
+.rabbit-token.baby .rabbit-id{color:#b9786b;background:#fff9f0d9}
+.rabbit-more{font-size:11px;max-width:110px;overflow-wrap:anywhere;text-align:center}
+.lineage-card{padding:24px 25px 20px}
+.lineage-heading{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:7px}
+.lineage-heading h2{margin:0;font-size:20px;font-weight:900;letter-spacing:-.055em;line-height:1.4}
+.lineage-heading h2 span{font-size:18px}
+.lineage-month{flex:none;background:#edf3e8;border-radius:30px;padding:7px 10px;color:#608269;font:900 12px 'DM Sans','Noto Sans KR',sans-serif;white-space:nowrap}
+.lineage-intro{font-size:12px;color:#859589;font-weight:700;line-height:1.65;margin:0 0 17px}
+.lineage-search{display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:#f7f9f3;border:1px solid #e7ede2;border-radius:12px;padding:10px 12px;margin-bottom:13px}
+.lineage-search label{flex:none;font-size:12px;font-weight:900;color:#55745c}
+.lineage-search>div{display:flex;gap:7px;min-width:0;flex:1}
+.lineage-search input{height:35px;border:1px solid #dfe9dc;border-radius:8px;min-width:0;width:100%;padding:0 11px;background:white;color:#34543f;font:800 13px 'DM Sans','Noto Sans KR',sans-serif;outline:none}
+.lineage-search input:focus{border-color:#87ae8c}
+.lineage-search button{height:35px;flex:none;border:0;border-radius:8px;background:#577b60;color:white;font-size:11px;font-weight:900;padding:0 10px}
+.lineage-search button:hover{background:#3d6649}
+.lineage-search button span{margin-left:5px}
+.lookup-message{flex-basis:100%;font-size:11px;font-weight:800;color:#ad705d}
+.lookup-message:empty{display:none}
+.selected-trace{display:flex;gap:10px;align-items:center;border:1px solid #e8eadb;border-radius:12px;background:#f9f8ed;padding:12px 14px;color:#6f8068;font-size:12px;font-weight:800;line-height:1.65;margin-bottom:17px}
+.selected-trace .trace-hand{font-size:17px}
+.selected-trace.has-selection{display:block;background:#fff8df;border-color:#ead6a4;padding:14px 16px}
+.selection-title{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:6px}
+.selection-title strong{color:#3b694d;font-size:15px}
+.selection-title .selection-type{padding:3px 8px;background:white;border-radius:6px;color:#a0784b;font-size:10px;font-weight:900}
+.selected-trace p{font-size:12px;font-weight:800;line-height:1.7;color:#75694c;margin:3px 0 0}
+.trace-columns{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:start}
+.trace-lane{border:1px solid #e4ede0;border-radius:13px;padding:13px 12px;background:#f8fbf6;min-width:0}
+.trace-lane.born-lane{background:#fff8f4;border-color:#f3e6de}
+.trace-lane-heading{display:flex;align-items:center;gap:8px;margin-bottom:13px}
+.trace-lane-icon{font-size:21px}
+.trace-lane-heading>div{min-width:0;flex:1}
+.trace-lane-heading strong{display:block;color:#487455;font-size:12px;font-weight:900}
+.trace-lane-heading small{display:block;color:#9caa9d;font-size:10px;font-weight:700;margin-top:1px}
+.born-lane .trace-lane-heading strong{color:#aa7867}
+.trace-count{flex:none;border-radius:30px;padding:4px 6px;background:#e5f0e4;color:#64836b;font:900 10px 'DM Sans','Noto Sans KR',sans-serif}
+.born-lane .trace-count{background:#ffebe0;color:#b98977}
+.trace-list{display:flex;flex-direction:column;gap:7px}
+.trace-pair{display:flex;justify-content:space-between;align-items:center;gap:5px;background:white;border:1.5px solid #e7eee5;border-radius:10px;padding:8px 6px;min-width:0}
+.born-lane .trace-pair{border-color:#f2e9e2}
+.trace-pair.is-highlighted{border-color:#e7b765;background:#fffbed;box-shadow:0 0 0 2px #f5dea85e}
+.trace-chip{display:flex;flex-direction:column;align-items:center;gap:2px;min-width:0;flex:1}
+.trace-chip svg{width:32px;height:34px}
+.trace-chip.baby svg{width:26px;height:31px}
+.trace-chip .trace-name{font-size:9px;color:#8d998d;font-weight:800;text-align:center;white-space:nowrap}
+.trace-chip .trace-id{font:900 11px 'DM Sans','Noto Sans KR',sans-serif;color:#42744c;white-space:nowrap;max-width:100%;overflow:hidden;text-overflow:ellipsis}
+.trace-chip.baby .trace-id{color:#b17c70}
+.trace-arrow{display:flex;flex-direction:column;align-items:center;gap:1px;flex:none;color:#92b397}
+.trace-arrow strong{font-size:16px;line-height:1}
+.trace-arrow span{font-size:9px;font-weight:900;letter-spacing:-.04em}
+.born-lane .trace-arrow{color:#e4a18e}
+.trace-more{text-align:center;color:#a3b0a4;font-size:10px;font-weight:800;padding:5px}
+.trace-empty{background:#ffffffb8;border:1px dashed #dae6d6;border-radius:9px;color:#9cab9c;font-size:11px;text-align:center;padding:19px 8px;font-weight:700}
+.lineage-foot{font-size:11px;color:#97a391;font-weight:800;margin-top:14px;text-align:center}
+@media(max-width:1150px){.lineage-card{padding:22px 17px}.trace-columns{gap:8px}.trace-lane{padding:12px 8px}.trace-chip svg{width:29px;height:31px}}
+@media(max-width:620px){.rabbit-token{min-width:43px;padding:2px 1px 5px}.rabbit-id{max-width:56px;font-size:9px}.lineage-heading{align-items:flex-start}.lineage-heading h2{font-size:17px}.lineage-month{font-size:10px}.lineage-search{gap:7px}.lineage-search label{width:100%}.trace-columns{grid-template-columns:1fr}.trace-lane{padding:12px}.trace-pair{padding:9px}.trace-chip svg{width:35px;height:37px}.trace-chip.baby svg{width:30px;height:33px}.trace-chip .trace-name{font-size:10px}.trace-chip .trace-id{font-size:12px}}
+/* Expandable 2–5-step rabbit family tree with every survival/birth/growth edge. */
+.tree-head{display:flex;justify-content:space-between;align-items:end;gap:12px;margin:0 0 11px}
+.tree-kicker{font:900 9px 'DM Sans',sans-serif;color:#91a18b;letter-spacing:.16em}
+.tree-head h3{margin:3px 0 0;font-size:16px;font-weight:900;color:#426348;letter-spacing:-.05em}
+.tree-head h3 span{font-size:15px}
+.tree-legend{display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+.tree-legend span{font-size:10px;font-weight:800;color:#849383;white-space:nowrap}
+.tree-legend i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:4px}
+.tree-legend-alive{background:#76a486}.tree-legend-birth{background:#eaa18b}.tree-legend-grow{background:#8da5d5}
+.tree-toolbar{display:flex;align-items:center;justify-content:space-between;gap:11px;background:#f4f8f0;padding:9px 11px;border:1px solid #e4eddf;border-bottom:0;border-radius:13px 13px 0 0}
+.tree-modes{display:flex;gap:4px;flex-wrap:wrap}
+.tree-modes button{border:1px solid transparent;border-radius:8px;background:transparent;color:#849b87;font-size:11px;font-weight:900;padding:9px 10px;white-space:nowrap}
+.tree-modes button.is-active{background:#fffefa;border-color:#dce7d9;box-shadow:0 2px 4px #335d3d0a;color:#476d4f}
+.tree-modes button:disabled{opacity:.4;cursor:not-allowed}
+.tree-pager{display:flex;align-items:center;gap:8px;min-width:0}
+.tree-pager button{width:28px;height:29px;flex:none;background:#fffefa;border:1px solid #dfead9;border-radius:8px;color:#638369;font-size:20px;line-height:1;font-weight:800}
+.tree-pager button:hover:enabled{background:#e5f0e0}.tree-pager button:disabled{opacity:.3;cursor:default}
+.tree-pager span{font:900 12px 'DM Sans','Noto Sans KR',sans-serif;color:#52745a;white-space:nowrap;max-width:145px;overflow:hidden;text-overflow:ellipsis}
+.tree-depth-toolbar{display:flex;justify-content:space-between;align-items:center;gap:9px;flex-wrap:wrap;padding:10px 12px;background:#f9fbf6;border-left:1px solid #e4eddf;border-right:1px solid #e4eddf}
+.tree-depth-toolbar>span{font-size:11px;font-weight:900;color:#66836a}
+.tree-depth-buttons{display:flex;gap:5px;flex-wrap:wrap}
+.tree-depth-btn{border:1px solid #dce8d8;border-radius:7px;background:#fff;color:#718c75;font-size:11px;font-weight:800;padding:7px 9px}
+.tree-depth-btn:hover{background:#f0f7ed}
+.tree-depth-btn.is-active{border-color:#6d9976;background:#638e6c;color:#fff}
+.tree-frame{background:linear-gradient(180deg,#fbfdf8,#f6faf2);border:1px solid #e4eddf;border-radius:0 0 13px 13px;overflow-x:auto;scrollbar-color:#c9dcc6 transparent;scrollbar-width:thin}
+.tree-frame svg{height:auto;max-width:none;display:block}
+.tree-frame.is-fit svg{width:100%!important;min-width:0!important}
+.tree-view-hint{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:7px;color:#93a491;font-size:10px;font-weight:800}
+.tree-view-hint button{border:1px solid #dae6d6;border-radius:8px;background:#f5f9f2;color:#57775e;font-size:10px;font-weight:900;padding:7px 10px;white-space:nowrap}
+.tree-view-hint button:hover{background:#e8f1e3}
+.tree-view-actions{display:flex;align-items:center;justify-content:flex-end;gap:7px;flex-wrap:wrap}
+.tree-view-hint .tree-popup-open{background:#426e50;border-color:#426e50;color:white;font-size:12px;padding:9px 13px}
+.tree-view-hint .tree-popup-open:hover{background:#315740}
+.tree-popup-notice{margin:8px 0 0;color:#ac6558;font-size:12px;font-weight:800}
+body:not(.tree-popup) #rabbitTree{cursor:zoom-in}
+body:not(.tree-popup) #rabbitTree:hover{background:#f1f8ef75}
+.tree-explanation{border-radius:10px;background:#e9f1e6;color:#5e7e63;font-size:12px;font-weight:800;line-height:1.8;padding:12px 15px;margin:10px 0 20px}
+.tree-svg-month{font:900 14px 'DM Sans','Noto Sans KR',sans-serif;fill:#819884;letter-spacing:-.01em}
+.tree-svg-month-current{fill:#3d7352}
+.tree-svg-layer-count{font:800 10px 'Noto Sans KR',sans-serif;fill:#9aaa9b}
+.tree-svg-divider{stroke:#dce8d6;stroke-width:1;stroke-dasharray:4 6}
+.tree-svg-link{fill:none;stroke-width:3.4;stroke-linecap:round}
+.tree-svg-link.alive{stroke:#83b18b}.tree-svg-link.birth{stroke:#e7a48b}.tree-svg-link.grow{stroke:#96acdc}
+.tree-svg-link-label{font:900 11px 'Noto Sans KR',sans-serif;fill:#65836b;text-anchor:middle;paint-order:stroke;stroke:#f9fcf6;stroke-width:5px;stroke-linejoin:round}
+.tree-svg-link-label.birth{fill:#ba826e}.tree-svg-link-label.grow{fill:#7089bd}
+.tree-svg-card{stroke-width:2;fill:#fffefa;filter:drop-shadow(0 3px 3px #344c2d0b)}
+.tree-svg-card.adult{stroke:#b9d2b7}.tree-svg-card.baby{stroke:#efd3c7}.tree-svg-card.is-selected{stroke:#dbad57;stroke-width:3.5}
+.tree-svg-caption{font:800 9px 'Noto Sans KR',sans-serif;fill:#96a295}
+.tree-svg-id{font:900 13px 'DM Sans','Noto Sans KR',sans-serif;fill:#446b4e}
+.tree-svg-id.baby{fill:#b27e6e}
+.tree-svg-desc{font:800 9px 'Noto Sans KR',sans-serif;fill:#8e9d8e}
+.tree-svg-fallback{font:900 17px 'Noto Sans KR',sans-serif;fill:#8b9d8b;text-anchor:middle}
+@media(max-width:1150px){.tree-head{align-items:flex-start;flex-wrap:wrap}.tree-legend{justify-content:flex-start}}
+@media(max-width:620px){.tree-toolbar{align-items:flex-start;flex-wrap:wrap}.tree-head h3{font-size:15px}.tree-pager{width:100%;justify-content:flex-end}.tree-depth-toolbar{align-items:flex-start}.tree-depth-toolbar>span{width:100%}.tree-explanation{font-size:11px}.tree-view-hint{align-items:flex-start}}
+
+/* Teaching diagram: initial rabbits appear first, as separate downward trees. */
+[hidden]{display:none!important}
+.main-controls{margin-bottom:22px}
+.main-controls .inputs-row,.main-controls .timeline-controls{max-width:990px}
+.forest-card{padding:26px 29px 24px;margin-bottom:23px}
+.forest-intro{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;margin-bottom:18px}
+.forest-intro h2{font-size:26px;letter-spacing:-.055em;color:#385e45;font-weight:900;margin:5px 0 7px}
+.forest-intro h2 span{font-size:22px}
+.forest-intro p{margin:0;color:#839386;font-size:13px;font-weight:700;line-height:1.7}
+.forest-legend{max-width:310px;padding-top:12px;gap:9px 15px}
+.forest-legend span{font-size:11px}
+.tree-legend .forest-legend-baby,.tree-legend .forest-legend-adult{width:13px;height:13px;border:2px solid #606963;vertical-align:-3px}
+.tree-legend .forest-legend-baby{background:#f2a329}
+.tree-legend .forest-legend-adult{background:#fffefa}
+.forest-start-summary{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px;margin:0 0 17px}
+.forest-start-group{display:flex;align-items:center;gap:15px;min-width:0;padding:13px 18px;border-radius:14px;border:1px solid #eee9db;text-align:left;cursor:pointer;font:inherit;transition:transform .16s,box-shadow .16s}
+.forest-start-group:hover:enabled{transform:translateY(-2px);box-shadow:0 5px 16px #405c4620}
+.forest-start-group:disabled{opacity:.65;cursor:default}
+.forest-start-group.baby{background:#fff2e5;border-color:#f4e0d2}
+.forest-start-group.adult{background:#edf5ea;border-color:#dcebd8}
+.forest-start-group>svg{width:48px;height:55px;flex:none}
+.forest-start-details{min-width:0;display:flex;flex-direction:column;gap:3px}
+.forest-start-group span{font-size:11px;font-weight:900;color:#84917f}
+.forest-start-group em{font-size:10px;font-style:normal;font-weight:900;color:#7b9a7d;margin-top:3px}
+.forest-start-group strong{font-size:23px;font-weight:900;line-height:1.2;color:#476c51}
+.forest-start-group.baby strong{color:#aa6f54}
+.forest-start-group small{font-size:12px;font-weight:800;color:#829888;overflow-wrap:anywhere}
+.forest-view-toolbar{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;background:#f4f8f0;border:1px solid #e2ebdd;border-radius:13px 13px 0 0;padding:9px 12px}
+.forest-modes{display:flex;flex-wrap:wrap;gap:5px}
+.forest-modes button{background:transparent;border:1px solid transparent;border-radius:8px;padding:9px 14px;font-size:12px;font-weight:900;color:#7d937e}
+.forest-modes button.is-active{background:#fff;border-color:#d8e4d2;color:#456e4d;box-shadow:0 2px 7px #1f42100b}
+.forest-modes .forest-mode-single-adult.is-active{background:#e2f0e3;border-color:#8cad92;color:#3e6d4c}
+.forest-modes .forest-mode-single-baby.is-active{background:#fff0dc;border-color:#e9b786;color:#9b643a}
+.forest-card.is-single-sample .forest-start-summary{display:none}
+.forest-page-detail.is-sample{background:#fef9ee;border-color:#eee3cb;color:#86694c}
+.forest-pages{display:flex;align-items:center;gap:11px}
+.forest-pages button{width:31px;height:30px;border:1px solid #dce6d6;border-radius:8px;background:#fff;color:#5d7e62;font-weight:900;font-size:22px;line-height:1}
+.forest-pages button:disabled{opacity:.35;cursor:default}
+.forest-pages span{font-size:12px;color:#55735b;font-weight:900;white-space:nowrap}
+.forest-page-detail{margin:0;padding:10px 14px;color:#7d8e7b;background:#fbfcf9;border:1px solid #e5ecdf;border-top:none;font-size:12px;font-weight:800;line-height:1.55}
+.forest-focus-toolbar{border-radius:0;border-top:0}
+.forest-card .tree-depth-toolbar{border-top:0}
+.forest-card .tree-frame{border-radius:0 0 12px 12px;background:linear-gradient(#fbfcf9,#f6f9f3)}
+.forest-card .tree-explanation{margin-bottom:0}
+.tree-visual-row{display:flex;align-items:flex-start;min-width:0}
+.tree-visual-row .tree-frame{flex:1;min-width:0}
+.tree-popup-banner{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:14px 21px;margin:0 0 12px;background:#e8f1e6;border:1px solid #cee0ce;border-radius:12px}
+.tree-popup-banner>div{display:flex;flex-direction:column;gap:2px}
+.tree-popup-banner span{font-size:11px;font-weight:900;color:#75967b}
+.tree-popup-banner strong{font-size:24px;color:#335b40;line-height:1.3}
+.tree-popup-banner small{font-size:12px;font-weight:700;color:#819685}
+.tree-popup-banner button{flex:none;border:1px solid #abc6ae;border-radius:9px;padding:10px 14px;background:#fffefa;color:#456d51;font-size:12px;font-weight:900}
+.tree-popup-banner button:hover{background:#f0f7ed}
+body.tree-popup{background:#f6f8f2}
+.tree-popup .app-shell{max-width:none;padding:16px 22px}
+.tree-popup .topbar,.tree-popup .intro,.tree-popup .main-controls,.tree-popup .dashboard,.tree-popup footer{display:none}
+.tree-popup .forest-start-summary{display:none}
+.tree-popup .forest-card{margin:0;padding:20px 22px 18px;box-shadow:none}
+.tree-popup .forest-intro{margin-bottom:12px}
+.tree-popup .forest-intro h2{font-size:23px}
+.tree-popup .tree-view-hint .tree-popup-open{display:none}
+@media(max-width:620px){.tree-popup .app-shell{padding:9px}.tree-popup .forest-card{padding:15px 11px}.tree-popup-banner{align-items:flex-start}.tree-popup-banner strong{font-size:19px}.tree-popup-banner small{font-size:10px}.tree-popup-banner button{padding:7px 9px}.tree-view-hint{flex-wrap:wrap}.tree-view-actions{margin-left:auto}}
+.tree-month-rail{position:relative;flex:0 0 164px;background:#f0f6ed;border:1px solid #d9e7d5;border-right:0;border-radius:0 0 0 12px;overflow:hidden}
+.tree-rail-heading{position:absolute;top:12px;left:11px;right:8px;font-size:11px;font-weight:900;color:#6b8d70}
+.tree-rail-item{position:absolute;left:9px;right:9px;transform:translateY(-50%);display:flex;flex-direction:column;gap:2px;background:#fffefa;border:1px solid #dce8da;border-radius:11px;padding:8px 10px;box-shadow:0 2px 5px #3b654109;min-width:0}
+.tree-rail-item.is-current{background:#e7f2e4;border-color:#82aa89;box-shadow:0 0 0 2px #9cbea352}
+.tree-rail-month{font-size:11px;font-weight:900;color:#79947b}
+.tree-rail-item strong{font-size:17px;font-weight:900;line-height:1.15;color:#365c40;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tree-rail-item small{font-size:9px;font-weight:800;color:#91a293;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tree-month-rail.is-fit .tree-rail-heading{display:none}
+.tree-rail-item.is-compact{left:4px;right:4px;flex-direction:row;align-items:center;justify-content:space-between;gap:3px;border-radius:4px;border:0;background:#fffefaab;padding:1px 3px;box-shadow:none;min-height:0}
+.tree-rail-item.is-compact .tree-rail-month{font-size:9px;white-space:nowrap}
+.tree-rail-item.is-compact strong{font-size:9px}
+.tree-rail-item.is-compact small{display:none}
+.tree-rail-item.is-compact.is-current{background:#dcebd4}
+.forest-root-band{stroke-width:1.4;stroke-dasharray:7 7}
+.forest-root-band.baby{fill:#fff4e8;fill-opacity:.66;stroke:#eed8c7}
+.forest-root-band.adult{fill:#edf7ee;fill-opacity:.7;stroke:#cfdfd0}
+.forest-root-label{font:900 14px 'Noto Sans KR',sans-serif;fill:#5a8a61}
+.forest-root-label.baby{fill:#b77c58}
+.forest-current-row{fill:#e3ecd3;fill-opacity:.36;pointer-events:none}
+.forest-month-label{font:900 17px 'Noto Sans KR',sans-serif;fill:#6d866f}
+.forest-month-label.current{fill:#3c6b4a}
+.forest-month-note{font:800 12px 'Noto Sans KR',sans-serif;fill:#b0a582}
+.forest-arrow{fill:none;stroke:#abb5ad;stroke-width:3.2;stroke-linecap:round}
+.forest-arrow.birth{stroke:#d7ad97}
+.forest-arrow.grow{stroke:#9cafcf}
+.forest-dot{stroke:#606c65;stroke-width:2.8;fill:#fffefa}
+.forest-dot.baby{fill:#f3a52c;stroke:#a46c40}
+.forest-dot.is-selected{stroke:#d19b46;stroke-width:5}
+.forest-dot-id{font:900 12px 'DM Sans','Noto Sans KR',sans-serif;fill:#65766a;letter-spacing:-.02em}
+.forest-dot-group{cursor:help}
+@media(max-width:900px){.forest-intro{flex-wrap:wrap}.forest-legend{max-width:none;padding-top:0}.forest-card{padding:22px 19px}.forest-intro h2{font-size:23px}}
+@media(max-width:620px){.main-controls{margin-bottom:14px}.forest-card{padding:18px 13px;margin-bottom:14px}.forest-intro{gap:10px}.forest-intro h2{font-size:19px}.forest-intro p{font-size:11px}.forest-start-summary{gap:7px}.forest-start-group{gap:6px;padding:10px 7px}.forest-start-group>svg{width:33px;height:40px}.forest-start-group span{font-size:9px}.forest-start-group strong{font-size:17px}.forest-start-group small{font-size:10px}.forest-modes button{font-size:10px;padding:8px}.forest-pages span{font-size:10px}.forest-page-detail{font-size:10px}.tree-month-rail{flex-basis:119px}.tree-rail-item{left:5px;right:5px;padding:7px 6px}.tree-rail-item strong{font-size:14px}.tree-rail-item small{font-size:8px}.tree-rail-item.is-compact .tree-rail-month,.tree-rail-item.is-compact strong{font-size:8px}}
+
+  </style>
+</head>
+<body>
+  <svg xmlns="http://www.w3.org/2000/svg" class="svg-defs" aria-hidden="true">
+    <symbol id="rabbit-adult" viewBox="0 0 88 100">
+      <!-- Mature rabbit: broad white body and unmistakably long upright ears. -->
+      <circle cx="74" cy="76" r="10" fill="#f4f7f0" stroke="#69776c" stroke-width="2.1"/>
+      <ellipse cx="44" cy="77" rx="33" ry="21" fill="#fffefa" stroke="#69776c" stroke-width="2.7"/>
+      <ellipse cx="28" cy="26" rx="10" ry="25" fill="#fffefa" transform="rotate(-11 28 26)" stroke="#69776c" stroke-width="2.7"/>
+      <ellipse cx="60" cy="26" rx="10" ry="25" fill="#fffefa" transform="rotate(11 60 26)" stroke="#69776c" stroke-width="2.7"/>
+      <ellipse cx="28" cy="26" rx="4.5" ry="17" fill="#eaa9a8" transform="rotate(-11 28 26)"/>
+      <ellipse cx="60" cy="26" rx="4.5" ry="17" fill="#eaa9a8" transform="rotate(11 60 26)"/>
+      <circle cx="44" cy="53" r="28" fill="#fffefa" stroke="#69776c" stroke-width="2.7"/>
+      <ellipse cx="32" cy="54" rx="3" ry="4.2" fill="#36473f"/>
+      <ellipse cx="56" cy="54" rx="3" ry="4.2" fill="#36473f"/>
+      <circle cx="22.5" cy="65" r="6" fill="#ffcfcc" opacity=".9"/>
+      <circle cx="65.5" cy="65" r="6" fill="#ffcfcc" opacity=".9"/>
+      <path d="M40 62 Q44 58 48 62 L44 66 Z" fill="#e79289"/>
+      <path d="M44 66 Q40 72 36 68 M44 66 Q48 72 52 68" fill="none" stroke="#836d65" stroke-width="1.6" stroke-linecap="round"/>
+      <ellipse cx="25" cy="93" rx="13" ry="5.5" fill="#fffefa" stroke="#69776c" stroke-width="2"/>
+      <ellipse cx="63" cy="93" rx="13" ry="5.5" fill="#fffefa" stroke="#69776c" stroke-width="2"/>
+    </symbol>
+    <symbol id="rabbit-baby" viewBox="0 0 88 100">
+      <!-- Baby rabbit: smaller golden body, short floppy ears, round cheeks and a bib. -->
+      <circle cx="64" cy="82" r="7" fill="#ffdfa6" stroke="#a8734b" stroke-width="2"/>
+      <ellipse cx="44" cy="81" rx="23" ry="16" fill="#ffdba4" stroke="#a8734b" stroke-width="2.7"/>
+      <ellipse cx="29" cy="43" rx="8.5" ry="15" fill="#ffdba4" transform="rotate(-34 29 43)" stroke="#a8734b" stroke-width="2.6"/>
+      <ellipse cx="59" cy="43" rx="8.5" ry="15" fill="#ffdba4" transform="rotate(34 59 43)" stroke="#a8734b" stroke-width="2.6"/>
+      <ellipse cx="29" cy="43" rx="3.7" ry="9" fill="#f5a2a0" transform="rotate(-34 29 43)"/>
+      <ellipse cx="59" cy="43" rx="3.7" ry="9" fill="#f5a2a0" transform="rotate(34 59 43)"/>
+      <circle cx="44" cy="65" r="23" fill="#ffe1b5" stroke="#a8734b" stroke-width="2.7"/>
+      <path d="M38 43 Q41 37 44 43 Q47 37 50 43" fill="none" stroke="#c08a5d" stroke-width="2" stroke-linecap="round"/>
+      <ellipse cx="35" cy="64" rx="3.2" ry="4.4" fill="#4c4038"/>
+      <ellipse cx="53" cy="64" rx="3.2" ry="4.4" fill="#4c4038"/>
+      <circle cx="28" cy="73" r="6" fill="#ffb2aa"/>
+      <circle cx="60" cy="73" r="6" fill="#ffb2aa"/>
+      <path d="M40 72 Q44 69 48 72 L44 75 Z" fill="#d88c83"/>
+      <path d="M41 76 Q44 79 47 76" fill="none" stroke="#956a58" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M36 82 Q44 88 52 82 L50 91 Q44 96 38 91 Z" fill="#fffaf2" stroke="#b58962" stroke-width="1.3"/>
+      <circle cx="44" cy="87" r="2.3" fill="#f5a52f"/>
+      <ellipse cx="30" cy="94" rx="9" ry="4" fill="#ffdfa6" stroke="#a8734b" stroke-width="1.7"/>
+      <ellipse cx="58" cy="94" rx="9" ry="4" fill="#ffdfa6" stroke="#a8734b" stroke-width="1.7"/>
+    </symbol>
+  </svg>
+
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark"><svg viewBox="0 0 88 100"><use href="#rabbit-adult"/></svg></div>
+        <span>수학 놀이터 <span class="brand-dot">·</span> MATH LAB</span>
+      </div>
+      <div class="topbar-right"><span class="live-dot"></span> INTERACTIVE LESSON <span class="topbar-sep"></span> 피보나치 수열</div>
+    </header>
+
+    <main>
+      <div class="tree-popup-banner" id="treePopupBanner" hidden>
+        <div><span>🐰 피보나치 토끼 실험실</span><strong>수형도 크게 보기</strong><small>나무 가지를 가로로 이동하면서 성장과 출산을 따라가 보세요.</small></div>
+        <button id="closeTreePopup" type="button">✕ 창 닫기</button>
+      </div>
+      <div class="intro">
+        <div class="intro-main">
+          <div class="eyebrow"><span class="eyebrow-star">✳</span> FIBONACCI RABBIT EXPERIMENT</div>
+          <h1>토끼들의 <span>시간 여행</span><span class="title-sparkle">✦</span></h1>
+          <p>한 달, 또 한 달… 토끼 가족은 어떻게 늘어날까요?<br class="desktop-break"/> 직접 숫자를 바꿔 보며 피보나치 수열의 비밀을 발견해 보세요.</p>
+        </div>
+        <div class="intro-deco" aria-hidden="true">
+          <div class="deco-sun"></div><div class="deco-leaf leaf-one">✿</div><div class="deco-leaf leaf-two">✳</div>
+          <svg viewBox="0 0 88 100"><use href="#rabbit-adult"/></svg>
+          <span class="deco-cloud cloud-one"></span><span class="deco-cloud cloud-two"></span>
+        </div>
+      </div>
+
+      <div class="controls card main-controls">
+            <div class="section-heading">
+              <div><div class="section-kicker">01 / EXPERIMENT SETUP</div><h2>실험 설정 <span class="heading-emoji">⚙️</span></h2></div>
+              <button id="resetBtn" class="text-button" type="button"><span aria-hidden="true">↻</span> 처음으로</button>
+            </div>
+            <div class="inputs-row">
+              <label class="control-field" for="initialAdults">
+                <span class="field-label"><span class="field-dot adult-dot"></span> 처음 어른 토끼</span>
+                <span class="input-unit"><input id="initialAdults" type="number" min="0" max="999" step="1" value="1" inputmode="numeric"/><span>마리</span></span>
+              </label>
+              <label class="control-field" for="initialBabies">
+                <span class="field-label"><span class="field-dot baby-dot"></span> 처음 새끼 토끼</span>
+                <span class="input-unit"><input id="initialBabies" type="number" min="0" max="999" step="1" value="0" inputmode="numeric"/><span>마리</span></span>
+              </label>
+              <label class="control-field" for="targetMonth">
+                <span class="field-label"><span class="field-dot month-dot"></span> 살펴볼 개월 수</span>
+                <span class="input-unit"><input id="targetMonth" type="number" min="0" max="240" step="1" value="6" inputmode="numeric"/><span>개월</span></span>
+              </label>
+            </div>
+            <div class="timeline-controls">
+              <div class="timeline-label"><span class="small-icon">◷</span> 시간 여행하기</div>
+              <div class="stepper" role="group" aria-label="개월 변경">
+                <button id="prevMonth" class="step-button" type="button" aria-label="1개월 빼기">−</button>
+                <div class="month-display"><strong id="currentMonth">6</strong><span>개월째</span></div>
+                <button id="nextMonth" class="step-button" type="button" aria-label="1개월 더하기">+</button>
+              </div>
+              <button id="playBtn" class="play-button" type="button"><span id="playIcon">▶</span> <span id="playLabel">자동 재생</span></button>
+            </div>
+            <p class="field-hint">* 0개월은 시작 시점이에요. 0~240개월까지 탐구할 수 있어요.</p>
+      </div>
+
+      <section class="forest-card card" aria-labelledby="forestHeading">
+        <div class="forest-intro">
+          <div><div class="section-kicker">02 / RABBIT FAMILY TREE</div><h2 id="forestHeading">처음 토끼부터 펼쳐지는 수형도 <span>🌳</span></h2><p>예시처럼 처음 토끼를 각각 나란히 놓고, 아래로 성장과 출산의 가지를 이어 보세요.</p></div>
+          <div class="tree-legend forest-legend"><span><i class="forest-legend-baby"></i>주황색 ● 새끼</span><span><i class="forest-legend-adult"></i>흰색 ○ 어른</span><span><i class="tree-legend-alive"></i>생존</span><span><i class="tree-legend-birth"></i>출산</span><span><i class="tree-legend-grow"></i>성장</span></div>
+        </div>
+        <div class="forest-start-summary" aria-live="polite">
+          <button class="forest-start-group baby" id="forestJumpBaby" type="button" title="수형도에서 새끼 출발 토끼로 이동"><svg viewBox="0 0 88 100" aria-hidden="true"><use href="#rabbit-baby"/></svg><span class="forest-start-details"><span>0개월 · 처음 새끼 토끼</span><strong id="forestBabyCount">0마리</strong><small id="forestBabyRange">없음</small><em>수형도에서 보기 →</em></span></button>
+          <button class="forest-start-group adult" id="forestJumpAdult" type="button" title="수형도에서 어른 출발 토끼로 이동"><svg viewBox="0 0 88 100" aria-hidden="true"><use href="#rabbit-adult"/></svg><span class="forest-start-details"><span>0개월 · 처음 어른 토끼</span><strong id="forestAdultCount">1마리</strong><small id="forestAdultRange">#1</small><em>수형도에서 보기 →</em></span></button>
+        </div>
+        <div class="forest-view-toolbar">
+          <div class="forest-modes" role="group" aria-label="수형도 보기 모드"><button id="forestModeAll" type="button" class="is-active" aria-pressed="true">처음 토끼 함께 보기</button><button id="forestModeSingleAdult" class="forest-mode-single-adult" type="button" aria-pressed="false">⚪ 어른 토끼 1마리</button><button id="forestModeSingleBaby" class="forest-mode-single-baby" type="button" aria-pressed="false">🟠 새끼 토끼 1마리</button><button id="forestModeFocus" type="button" aria-pressed="false">한 마리 자세히</button></div>
+          <div class="forest-pages" id="forestPages"><button id="forestPrev" type="button" aria-label="이전 시작 토끼 묶음">‹</button><span id="forestPageLabel">처음 토끼 1~4</span><button id="forestNext" type="button" aria-label="다음 시작 토끼 묶음">›</button></div>
+        </div>
+        <p class="forest-page-detail" id="forestPageDetail">위의 수는 처음 시작한 모든 토끼의 수입니다.</p>
+        <div class="tree-toolbar forest-focus-toolbar" id="forestFocusToolbar" hidden><div class="tree-modes" role="group" aria-label="수형도 출발 토끼 종류"><button id="treeModeAdult" type="button" class="is-active" aria-pressed="true">어른에서 시작</button><button id="treeModeBaby" type="button" aria-pressed="false">새끼에서 시작</button></div><div class="tree-pager"><button id="treeFocusPrev" type="button" aria-label="이전 번호 토끼">‹</button><span id="treeFocusLabel">어른 #1</span><button id="treeFocusNext" type="button" aria-label="다음 번호 토끼">›</button></div></div>
+        <div class="tree-depth-toolbar"><span>수형도 뻗는 단계</span><div class="tree-depth-buttons" role="group" aria-label="수형도 변화 단계"><button class="tree-depth-btn" type="button" data-tree-depth="2">2개월</button><button class="tree-depth-btn" type="button" data-tree-depth="3">3개월</button><button class="tree-depth-btn" type="button" data-tree-depth="4">4개월</button><button class="tree-depth-btn" type="button" data-tree-depth="5">5개월</button><button class="tree-depth-btn is-active" type="button" data-tree-depth="6" aria-pressed="true">6개월</button></div></div>
+        <div class="tree-visual-row"><div class="tree-month-rail" id="treeMonthRail" aria-label="수형도 개월별 전체 토끼 수"></div><div class="tree-frame" id="treeFrame"><svg id="rabbitTree" viewBox="0 0 1840 900" role="img" aria-label="처음 토끼 각각에서 아래로 갈라지는 최대 6개월의 성장과 출산 수형도. 클릭하면 새 창에서 크게 볼 수 있습니다."></svg></div></div>
+        <div class="tree-view-hint"><span id="treeViewHint">↔ 옆으로 스크롤하세요. 수형도를 클릭하면 별도의 큰 창으로 열려요.</span><div class="tree-view-actions"><button id="treeFitBtn" type="button" aria-pressed="false">전체 보기</button><button id="treePopupBtn" class="tree-popup-open" type="button">⤢ 큰 창으로 보기</button></div></div>
+        <p id="treePopupNotice" class="tree-popup-notice" role="status" hidden></p>
+        <div class="tree-explanation" id="treeExplanation" aria-live="polite"></div>
+      </section>
+
+      <div class="dashboard">
+        <section class="main-column" aria-label="토끼 실험">
+
+          <section class="meadow card" aria-labelledby="meadowHeading">
+            <div class="meadow-header">
+              <div><div class="section-kicker light-kicker">03 / RABBIT GARDEN</div><h2 id="meadowHeading">우리 토끼 마을 <span>🌼</span></h2></div>
+              <div class="month-badge"><span>DAY BY DAY</span><strong><span id="gardenMonth">6</span> MONTH</strong></div>
+            </div>
+            <div class="stats-row" aria-live="polite">
+              <div class="stat stat-adult"><div class="stat-icon"><svg viewBox="0 0 88 100"><use href="#rabbit-adult"/></svg></div><div><span>어른 토끼</span><strong id="adultCount">13</strong><small>마리</small></div></div>
+              <div class="stat stat-baby"><div class="stat-icon"><svg viewBox="0 0 88 100"><use href="#rabbit-baby"/></svg></div><div><span>새끼 토끼</span><strong id="babyCount">8</strong><small>마리</small></div></div>
+              <div class="stat stat-total"><div class="total-icon">∑</div><div><span>전체 토끼</span><strong id="totalCount">21</strong><small>마리</small></div></div>
+            </div>
+            <div class="garden-space">
+              <div class="garden-sun"></div><div class="garden-cloud gcloud-1"></div><div class="garden-cloud gcloud-2"></div>
+              <div class="garden-title"><span class="field-dot adult-dot"></span> 어른 토끼 구역 <span class="garden-title-count" id="adultGardenCount"></span></div>
+              <div id="adultGarden" class="rabbit-garden adult-garden" aria-label="어른 토끼 그림"></div>
+              <div class="garden-divider"><span>✿</span><span></span><span>✿</span></div>
+              <div class="garden-title"><span class="field-dot baby-dot"></span> 새끼 토끼 구역 <span class="garden-title-count" id="babyGardenCount"></span></div>
+              <div id="babyGarden" class="rabbit-garden baby-garden" aria-label="새끼 토끼 그림"></div>
+              <div class="garden-ground"></div>
+            </div>
+            <div class="garden-foot"><span class="info-dot">i</span> <span id="gardenNotice">토끼 번호를 누르면 어디서 왔는지 알아볼 수 있어요.</span></div>
+          </section>
+
+          <section class="lineage-card card" aria-labelledby="lineageHeading">
+            <div class="section-kicker">04 / FOLLOW THE RABBITS</div>
+            <div class="lineage-heading"><h2 id="lineageHeading">누가 자랐고, 누가 태어났을까? <span>🔎</span></h2><span class="lineage-month" id="lineageMonth">5 → 6개월</span></div>
+            <p class="lineage-intro" id="lineageIntro">토끼에게 붙인 번호는 어른이 되어도 바뀌지 않아요. 같은 번호를 따라가 보세요!</p>
+            <div class="lineage-search"><label for="rabbitLookup">토끼 번호 추적</label><div><input id="rabbitLookup" type="text" inputmode="numeric" autocomplete="off" placeholder="예: 8" aria-describedby="lookupMessage"/><button id="lookupBtn" type="button">관계 찾기 <span>→</span></button></div><span id="lookupMessage" class="lookup-message" role="status"></span></div>
+            <div id="selectedTrace" class="selected-trace" aria-live="polite"><span class="trace-hand">☝️</span> 위 토끼 그림을 누르거나 번호를 입력해 보세요.</div>
+            <div class="trace-columns">
+              <article class="trace-lane grow-lane"><div class="trace-lane-heading"><span class="trace-lane-icon">🌱</span><div><strong>새끼가 어른으로 성장</strong><small>번호는 그대로!</small></div><span class="trace-count" id="growthPairCount"></span></div><div id="growthPairs" class="trace-list"></div></article>
+              <article class="trace-lane born-lane"><div class="trace-lane-heading"><span class="trace-lane-icon">🍼</span><div><strong>어른이 새끼를 낳음</strong><small>새 번호를 받아요!</small></div><span class="trace-count" id="birthPairCount"></span></div><div id="birthPairs" class="trace-list"></div></article>
+            </div>
+            <div class="lineage-foot">✦ 출산한 어른도 계속 살아 있어요. 새끼는 다음 달에 어른이 됩니다.</div>
+          </section>
+
+          <section class="rule-card">
+            <div class="rule-icon">💡</div>
+            <div><span class="rule-label">토끼 마을의 규칙</span><h3>매달 어른은 그대로, 새끼는 어른으로!</h3><p>어른 토끼는 매달 새끼 한 마리를 낳고 계속 살아 있어요. 기존 새끼 토끼는 다음 달에 어른이 돼요.</p>
+            <div class="formula"><span>다음 달 어른 = 지금 어른 + 지금 새끼</span><span>다음 달 새끼 = 지금 어른</span></div>
+            <p class="month-explainer" id="monthExplainer"></p></div>
+          </section>
+        </section>
+
+        <aside class="side-column" aria-label="개월별 변화 분석">
+          <section class="chart-card card">
+            <div class="section-heading compact-heading"><div><div class="section-kicker">05 / GROWTH CHART</div><h2>토끼 수의 변화 <span>📈</span></h2></div></div>
+            <div class="chart-legend"><span><i class="legend-adult"></i>어른 토끼</span><span><i class="legend-baby"></i>새끼 토끼</span></div>
+            <div class="chart-wrap"><svg id="growthChart" viewBox="0 0 480 246" role="img" aria-label="개월에 따른 어른 토끼와 새끼 토끼 수 변화 꺾은선 그래프"></svg></div>
+            <p class="chart-caption" id="chartCaption">0개월부터 6개월까지의 변화</p>
+          </section>
+          <section class="table-card card">
+            <div class="table-heading"><div><div class="section-kicker">06 / MONTHLY RECORD</div><h2>개월별 관찰 기록 <span>🗓️</span></h2></div><button id="downloadBtn" type="button" class="download-button" title="현재 개월까지 CSV 다운로드"><span aria-hidden="true">↓</span> 저장</button></div>
+            <p class="table-intro">표의 개월을 누르면 해당 시점으로 이동해요.</p>
+            <div class="table-scroll" id="tableScroll"><table><thead><tr><th scope="col">개월</th><th scope="col">어른 토끼</th><th scope="col">새끼 토끼</th><th scope="col">전체</th></tr></thead><tbody id="monthTable"></tbody></table></div>
+            <div class="table-footer"><span class="table-footnote"><span class="table-foot-dot"></span> 선택한 개월</span><span>단위: 마리</span></div>
+          </section>
+          <div class="challenge-card"><div class="challenge-title"><span>✦</span> 생각해 보기</div><p>어른 토끼 1마리, 새끼 토끼 0마리에서 시작하면 전체 토끼 수에 어떤 규칙이 나타날까요?</p><button id="challengeBtn" type="button">기본 조건으로 실험하기 <span>↗</span></button></div>
+        </aside>
+      </div>
+    </main>
+    <footer>MADE FOR CURIOUS MINDS <span>✳</span> 수학이 눈앞에서 자라는 순간</footer>
+  </div>
+  <script>
+(() => {
+  'use strict';
+
+  const LIMIT_MONTH = 240;
+  const LIMIT_START = 999;
+  const MAX_ADULT_PICTURES = 24;
+  const MAX_BABY_PICTURES = 24;
+  const formatter = new Intl.NumberFormat('ko-KR');
+  const byId = id => document.getElementById(id);
+  const fields = { adults: byId('initialAdults'), babies: byId('initialBabies'), month: byId('targetMonth') };
+  const state = { adults: 1, babies: 0, month: 6, selectedId: null, treeView: 'forest', forestPage: 0, treeMode: 'adult', treeFocusId: 1n, treeDepth: 6, treeFit: false, playing: false, timer: null };
+  let records = [];
+  let lastTreeViewKey = '';
+  let forestOffsets = {};
+
+  const fmt = n => formatter.format(n);
+  const safeInt = (value, min, max, fallback) => {
+    const number = Number(value);
+    if (!Number.isFinite(number)) return fallback;
+    return Math.max(min, Math.min(max, Math.trunc(number)));
+  };
+
+  // Open the same self-contained HTML in a tree-only window. No second file is needed.
+  const popupParams = new URLSearchParams(window.location.search);
+  const isTreePopup = popupParams.get('rabbitTreePopup') === '1';
+  if (isTreePopup) {
+    if (popupParams.has('adults')) state.adults = safeInt(popupParams.get('adults'), 0, LIMIT_START, state.adults);
+    if (popupParams.has('babies')) state.babies = safeInt(popupParams.get('babies'), 0, LIMIT_START, state.babies);
+    if (popupParams.has('month')) state.month = safeInt(popupParams.get('month'), 0, LIMIT_MONTH, state.month);
+    if (popupParams.has('depth')) state.treeDepth = safeInt(popupParams.get('depth'), 2, 6, state.treeDepth);
+    if (popupParams.has('page')) state.forestPage = safeInt(popupParams.get('page'), 0, LIMIT_START, 0);
+    const popupView = popupParams.get('view');
+    state.treeView = ['forest', 'focus', 'single-adult', 'single-baby'].includes(popupView) ? popupView : 'forest';
+    state.treeMode = popupParams.get('mode') === 'baby' ? 'baby' : 'adult';
+    const focusId = popupParams.get('focusId') || '';
+    if (/^\d{1,110}$/.test(focusId)) state.treeFocusId = BigInt(focusId);
+    document.body.classList.add('tree-popup');
+    document.title = '수형도 크게 보기 — 피보나치 토끼 실험실';
+    byId('treePopupBanner').hidden = false;
+    byId('treePopupBtn').hidden = true;
+    byId('treeViewHint').textContent = '↔ 수형도를 옆으로 스크롤하거나, 전체 보기로 한눈에 살펴보세요.';
+  }
+
+  function openTreePopup() {
+    const url = new URL(window.location.href);
+    const settings = {
+      rabbitTreePopup: '1', adults: state.adults, babies: state.babies,
+      month: state.month, depth: state.treeDepth, page: state.forestPage,
+      view: state.treeView, mode: state.treeMode, focusId: state.treeFocusId.toString()
+    };
+    for (const [name, value] of Object.entries(settings)) url.searchParams.set(name, String(value));
+    const popup = window.open(url.href, '_blank', 'popup=yes,width=1500,height=950,resizable=yes,scrollbars=yes');
+    if (popup) {
+      popup.opener = null;
+      byId('treePopupNotice').hidden = true;
+    } else {
+      byId('treePopupNotice').hidden = false;
+      byId('treePopupNotice').textContent = '새 창이 차단되었어요. 브라우저에서 팝업을 허용한 뒤 다시 눌러 주세요.';
+    }
+  }
+
+  function calculateRecords() {
+    const list = [{ month: 0, adults: BigInt(state.adults), babies: BigInt(state.babies) }];
+    for (let m = 1; m <= state.month; m++) {
+      const prev = list[m - 1];
+      list.push({ month: m, adults: prev.adults + prev.babies, babies: prev.adults });
+    }
+    return list;
+  }
+
+  // The one-rabbit examples have their own population and numbering, independent
+  // of the user's full experiment. Both start with rabbit #1 at month zero.
+  function singleRabbitRecordAt(kind, month) {
+    let adults = kind === 'adult' ? 1n : 0n;
+    let babies = kind === 'baby' ? 1n : 0n;
+    for (let m = 0; m < month; m++) {
+      const nextAdults = adults + babies;
+      babies = adults;
+      adults = nextAdults;
+    }
+    return { month, adults, babies };
+  }
+
+  const totalOf = record => record.adults + record.babies;
+  const tag = id => `#${fmt(id)}`;
+  const shortTag = id => {
+    const digits = id.toString();
+    return digits.length <= 9 ? tag(id) : `#${digits.slice(0, 3)}…${digits.slice(-3)}`;
+  };
+
+  // IDs are permanent. Adults are #1..#A; babies are #(A+1)..#(A+B).
+  // Each previous adult #i gives birth to baby #(previousTotal+i).
+  // Each previous baby keeps its ID when it becomes an adult.
+  function displayIds(first, count, max) {
+    const limit = BigInt(max);
+    if (count <= limit) return Array.from({ length: Number(count) }, (_, i) => first + BigInt(i));
+    const half = Math.floor(max / 2);
+    const begin = Array.from({ length: half }, (_, i) => first + BigInt(i));
+    const end = Array.from({ length: max - half }, (_, i) => first + count - BigInt(max - half) + BigInt(i));
+    return [...begin, null, ...end];
+  }
+
+  function relatedId() {
+    if (state.selectedId === null || state.month === 0) return null;
+    const current = records[state.month];
+    const prev = records[state.month - 1];
+    const id = state.selectedId;
+    if (id > current.adults) return id - totalOf(prev); // current baby -> previous adult parent
+    if (id <= prev.adults) return totalOf(prev) + id; // enduring adult -> newborn child
+    return null; // a baby that has just matured
+  }
+
+  function selectRabbit(id) {
+    state.selectedId = id;
+    byId('rabbitLookup').value = id.toString();
+    byId('lookupMessage').textContent = '';
+    const current = records[state.month];
+    renderGarden('adultGarden', 'adult', current.adults, MAX_ADULT_PICTURES, 1n);
+    renderGarden('babyGarden', 'baby', current.babies, MAX_BABY_PICTURES, current.adults + 1n);
+    renderLineage();
+    focusTreeOnRabbit(id);
+  }
+
+  function renderGarden(id, type, count, max, firstId) {
+    const container = byId(id);
+    container.replaceChildren();
+    const fragment = document.createDocumentFragment();
+    const visible = displayIds(firstId, count, max);
+    const related = relatedId();
+    visible.forEach((rabbitId, i) => {
+      if (rabbitId === null) {
+        const extra = document.createElement('span');
+        extra.className = `rabbit-more ${type === 'baby' ? 'baby-more' : ''}`;
+        extra.textContent = `중간 ${fmt(count - BigInt(max))}마리 생략`;
+        fragment.appendChild(extra);
+        return;
+      }
+      const bunny = document.createElement('button');
+      bunny.type = 'button';
+      bunny.className = `rabbit-token ${type}`;
+      if (rabbitId === state.selectedId) bunny.classList.add('is-selected');
+      else if (rabbitId === related) bunny.classList.add('is-related');
+      bunny.style.setProperty('--delay', `${Math.min(i * 13, 250)}ms`);
+      bunny.setAttribute('aria-pressed', String(rabbitId === state.selectedId));
+      bunny.setAttribute('aria-label', `${type === 'adult' ? '어른' : '새끼'} 토끼 ${tag(rabbitId)}. 이 토끼의 관계 보기`);
+      bunny.title = `${type === 'adult' ? '어른' : '새끼'} 토끼 ${tag(rabbitId)}`;
+      bunny.innerHTML = `<svg viewBox="0 0 88 100" aria-hidden="true"><use href="#rabbit-${type}"></use></svg><span class="rabbit-id" title="${tag(rabbitId)}">${shortTag(rabbitId)}</span>`;
+      bunny.addEventListener('click', () => selectRabbit(rabbitId));
+      fragment.appendChild(bunny);
+    });
+    if (count === 0n) {
+      const empty = document.createElement('span');
+      empty.className = 'rabbit-more';
+      empty.textContent = '아직 토끼가 없어요';
+      fragment.appendChild(empty);
+    }
+    container.appendChild(fragment);
+  }
+
+  function samplePairs(start, count, selected, limit = 4) {
+    if (count <= BigInt(limit)) return displayIds(start, count, limit);
+    const picks = [start, start + 1n, start + count - 1n];
+    if (selected !== null && selected >= start && selected < start + count) picks.push(selected);
+    else picks.push(start + 2n);
+    return [...new Set(picks)].sort((a, b) => a < b ? -1 : a > b ? 1 : 0);
+  }
+
+  function makeTraceChip(type, phase, id) {
+    const chip = document.createElement('div');
+    chip.className = `trace-chip ${type}`;
+    chip.title = tag(id);
+    chip.innerHTML = `<svg viewBox="0 0 88 100" aria-hidden="true"><use href="#rabbit-${type}"></use></svg><span class="trace-name">${phase} ${type === 'adult' ? '어른' : '새끼'}</span><span class="trace-id">${shortTag(id)}</span>`;
+    return chip;
+  }
+
+  function makeTracePair(kind, before, after, focused) {
+    const pair = document.createElement('div');
+    pair.className = 'trace-pair';
+    if (focused) pair.classList.add('is-highlighted');
+    const grown = kind === 'grow';
+    pair.appendChild(makeTraceChip(grown ? 'baby' : 'adult', '지난달', before));
+    const arrow = document.createElement('div');
+    arrow.className = 'trace-arrow';
+    arrow.innerHTML = `<strong>→</strong><span>${grown ? '성장' : '출산'}</span>`;
+    pair.appendChild(arrow);
+    pair.appendChild(makeTraceChip(grown ? 'adult' : 'baby', '이번 달', after));
+    return pair;
+  }
+
+  function birthInformation(id) {
+    const firstTotal = totalOf(records[0]);
+    if (id <= firstTotal) return '처음부터 마을에 있던 토끼예요.';
+    for (let month = 1; month < records.length; month++) {
+      if (id <= totalOf(records[month])) {
+        const parent = id - totalOf(records[month - 1]);
+        return `${month}개월째에 어른 ${tag(parent)}에게서 태어났어요.`;
+      }
+    }
+    return '';
+  }
+
+  function renderLineage() {
+    const month = state.month;
+    const current = records[month];
+    const details = byId('selectedTrace');
+    byId('lineageMonth').textContent = month === 0 ? '시작 시점' : `${month - 1} → ${month}개월`;
+    const growthList = byId('growthPairs');
+    const birthList = byId('birthPairs');
+    growthList.replaceChildren();
+    birthList.replaceChildren();
+
+    if (state.selectedId !== null && state.selectedId <= totalOf(current)) {
+      const id = state.selectedId;
+      const isBaby = id > current.adults;
+      let change = '';
+      if (month === 0) {
+        change = '지금은 시작 시점이라 지난달의 변화는 없어요.';
+      } else {
+        const prev = records[month - 1];
+        if (isBaby) change = `이번 달 새끼 ${tag(id)}의 부모는 지난달 어른 ${tag(id - totalOf(prev))}예요.`;
+        else if (id > prev.adults) change = `지난달 새끼 ${tag(id)} → 이번 달 어른 ${tag(id)}! 같은 토끼이므로 번호는 그대로예요.`;
+        else change = `지난달에도 어른이었고 지금도 살아 있어요. 이번 달 새끼 ${tag(totalOf(prev) + id)}를 낳았어요.`;
+      }
+      details.className = 'selected-trace has-selection';
+      details.replaceChildren();
+      const heading = document.createElement('div');
+      heading.className = 'selection-title';
+      const name = document.createElement('strong');
+      name.textContent = `${isBaby ? '새끼' : '어른'} 토끼 ${tag(id)}`;
+      const type = document.createElement('span');
+      type.className = 'selection-type';
+      type.textContent = '선택한 토끼';
+      heading.append(name, type);
+      const info = document.createElement('p');
+      info.textContent = birthInformation(id);
+      const story = document.createElement('p');
+      story.textContent = change;
+      details.append(heading, info, story);
+    } else {
+      details.className = 'selected-trace';
+      details.innerHTML = '<span class="trace-hand">☝️</span> 위 토끼 그림을 누르거나 번호를 입력해 보세요.';
+    }
+
+    if (month === 0) {
+      byId('lineageIntro').textContent = '시작 시점이에요. 한 달 더하기를 누르면 누가 성장하고 누가 태어났는지 볼 수 있어요.';
+      byId('growthPairCount').textContent = '0쌍';
+      byId('birthPairCount').textContent = '0쌍';
+      for (const target of [growthList, birthList]) {
+        const empty = document.createElement('div');
+        empty.className = 'trace-empty';
+        empty.textContent = '아직 이전 달이 없어요';
+        target.appendChild(empty);
+      }
+      return;
+    }
+
+    byId('lineageIntro').textContent = '지난달과 이번 달을 연결했어요. 같은 번호는 같은 토끼! 그림이나 번호를 눌러 관계를 찾아보세요.';
+    const prev = records[month - 1];
+    const previousTotal = totalOf(prev);
+    byId('growthPairCount').textContent = `${fmt(prev.babies)}쌍`;
+    byId('birthPairCount').textContent = `${fmt(prev.adults)}쌍`;
+    let selectedGrow = null;
+    let selectedParent = null;
+    if (state.selectedId !== null) {
+      if (state.selectedId > prev.adults && state.selectedId <= previousTotal) selectedGrow = state.selectedId;
+      if (state.selectedId <= prev.adults) selectedParent = state.selectedId;
+      else if (state.selectedId > previousTotal && state.selectedId <= totalOf(current)) selectedParent = state.selectedId - previousTotal;
+    }
+    const growIds = samplePairs(prev.adults + 1n, prev.babies, selectedGrow);
+    const parentIds = samplePairs(1n, prev.adults, selectedParent);
+    growIds.forEach(id => growthList.appendChild(makeTracePair('grow', id, id, id === selectedGrow)));
+    parentIds.forEach(id => birthList.appendChild(makeTracePair('birth', id, previousTotal + id, id === selectedParent)));
+    if (prev.babies === 0n) {
+      const empty = document.createElement('div'); empty.className = 'trace-empty'; empty.textContent = '성장할 새끼가 없어요'; growthList.appendChild(empty);
+    } else if (prev.babies > BigInt(growIds.length)) {
+      const note = document.createElement('div'); note.className = 'trace-more'; note.textContent = `외 ${fmt(prev.babies - BigInt(growIds.length))}쌍 더 있어요`; growthList.appendChild(note);
+    }
+    if (prev.adults === 0n) {
+      const empty = document.createElement('div'); empty.className = 'trace-empty'; empty.textContent = '출산할 어른이 없어요'; birthList.appendChild(empty);
+    } else if (prev.adults > BigInt(parentIds.length)) {
+      const note = document.createElement('div'); note.className = 'trace-more'; note.textContent = `외 ${fmt(prev.adults - BigInt(parentIds.length))}쌍 더 있어요`; birthList.appendChild(note);
+    }
+  }
+
+  const svgEl = (name, attrs = {}, contents = '') => {
+    const el = document.createElementNS('http://www.w3.org/2000/svg', name);
+    for (const [key, value] of Object.entries(attrs)) el.setAttribute(key, String(value));
+    if (contents) el.textContent = contents;
+    return el;
+  };
+
+  function recordAt(month) {
+    if (month < records.length) return records[month];
+    let result = records[records.length - 1];
+    for (let step = records.length; step <= month; step++) {
+      result = { month: step, adults: result.adults + result.babies, babies: result.adults };
+    }
+    return result;
+  }
+
+  function treeSource() {
+    return recordAt(Math.max(0, state.month - 1));
+  }
+
+  function treeRange() {
+    const root = treeSource();
+    return state.treeMode === 'adult'
+      ? { first: 1n, last: root.adults, count: root.adults }
+      : { first: root.adults + 1n, last: totalOf(root), count: root.babies };
+  }
+
+  function normalizeTreeFocus() {
+    const root = treeSource();
+    if (state.treeMode === 'adult' && root.adults === 0n && root.babies > 0n) state.treeMode = 'baby';
+    if (state.treeMode === 'baby' && root.babies === 0n && root.adults > 0n) state.treeMode = 'adult';
+    const range = treeRange();
+    if (range.count === 0n) { state.treeFocusId = 0n; return; }
+    if (state.treeFocusId < range.first || state.treeFocusId > range.last) state.treeFocusId = range.first;
+  }
+
+  function focusTreeOnRabbit(id) {
+    state.treeView = 'focus';
+    const current = records[state.month];
+    if (state.month === 0) {
+      state.treeMode = id <= current.adults ? 'adult' : 'baby';
+      state.treeFocusId = id;
+    } else {
+      const prev = records[state.month - 1];
+      if (id > current.adults) {
+        state.treeMode = 'adult';
+        state.treeFocusId = id - totalOf(prev);
+      } else if (id > prev.adults) {
+        state.treeMode = 'baby';
+        state.treeFocusId = id;
+      } else {
+        state.treeMode = 'adult';
+        state.treeFocusId = id;
+      }
+    }
+    renderTree();
+  }
+
+  function drawTreeNode(svg, x, y, kind, id, caption, detail, month) {
+    const group = svgEl('g', { class: `tree-svg-node ${kind}`, 'data-id': id.toString(), 'data-month': month, 'data-kind': kind });
+    const isSelected = id === state.selectedId && month === state.month;
+    group.appendChild(svgEl('rect', { x: x - 61, y: y - 34, width: 122, height: 68, rx: 13, class: `tree-svg-card ${kind}${isSelected ? ' is-selected' : ''}` }));
+    group.appendChild(svgEl('use', { href: `#rabbit-${kind}`, x: x - 55, y: y - 26, width: 44, height: 50 }));
+    group.appendChild(svgEl('text', { x: x - 7, y: y - 17, class: 'tree-svg-caption' }, `${caption} · ${month}개월`));
+    group.appendChild(svgEl('text', { x: x - 7, y: y + 2, class: `tree-svg-id ${kind}` }, shortTag(id)));
+    group.appendChild(svgEl('text', { x: x - 7, y: y + 19, class: 'tree-svg-desc' }, detail));
+    group.appendChild(svgEl('title', {}, `${month}개월 ${kind === 'adult' ? '어른' : '새끼'} 토끼 ${tag(id)}. ${detail}`));
+    svg.appendChild(group);
+  }
+
+  function drawTreeLink(svg, fromX, fromY, toX, toY, kind) {
+    const startY = fromY + 34;
+    const endY = toY - 34;
+    const curvature = Math.max(15, (endY - startY) * .48);
+    const path = `M${fromX} ${startY} C${fromX} ${startY + curvature},${toX} ${endY - curvature},${toX} ${endY}`;
+    svg.appendChild(svgEl('path', { d: path, class: `tree-svg-link ${kind}` }));
+    svg.appendChild(svgEl('text', { x: (fromX + toX) / 2, y: (startY + endY) / 2 - 8, class: `tree-svg-link-label ${kind}` }, { alive: '생존', birth: '출산', grow: '성장' }[kind]));
+  }
+
+  // The tree contains every offspring of ONE focused rabbit, not a sample.
+  // Each adult has two edges (survival and a uniquely numbered newborn).
+  // Each baby has one edge (maturation with the same permanent ID).
+  function buildRabbitBranch(id, kind, layer, depth, rootMonth, incoming = 'root', populationAt = recordAt) {
+    const node = { id, kind, layer, incoming, children: [], x: 0, y: 0 };
+    if (layer < depth) {
+      if (kind === 'adult') {
+        node.children.push(buildRabbitBranch(id, 'adult', layer + 1, depth, rootMonth, 'alive', populationAt));
+        const childId = totalOf(populationAt(rootMonth + layer)) + id;
+        node.children.push(buildRabbitBranch(childId, 'baby', layer + 1, depth, rootMonth, 'birth', populationAt));
+      } else {
+        node.children.push(buildRabbitBranch(id, 'adult', layer + 1, depth, rootMonth, 'grow', populationAt));
+      }
+    }
+    return node;
+  }
+
+  function initialForestPageCount() {
+    return Math.max(1, Math.ceil(state.adults / 2), Math.ceil(state.babies / 2));
+  }
+
+  function visibleInitialRabbits() {
+    const start = state.forestPage * 2;
+    const roots = [];
+    // The supplied teaching example shows babies first, then adults.
+    for (let i = start; i < Math.min(state.babies, start + 2); i++) roots.push({ id: BigInt(state.adults + i + 1), kind: 'baby' });
+    for (let i = start; i < Math.min(state.adults, start + 2); i++) roots.push({ id: BigInt(i + 1), kind: 'adult' });
+    return roots;
+  }
+
+  // A fixed side rail shows the WHOLE population for each month, regardless
+  // of which initial rabbits are visible on this forest page.
+  function renderMonthRail(firstMonth, depth, firstY, stepY, height, diagramWidth, populationAt = recordAt) {
+    const rail = byId('treeMonthRail');
+    const frame = byId('treeFrame');
+    rail.replaceChildren();
+    rail.classList.toggle('is-fit', state.treeFit);
+    const scale = state.treeFit ? (frame.clientWidth || diagramWidth) / diagramWidth : 1;
+    rail.style.height = `${height * scale}px`;
+    const heading = document.createElement('div');
+    heading.className = 'tree-rail-heading';
+    heading.textContent = '월별 전체 토끼 수';
+    rail.appendChild(heading);
+
+    for (let layer = 0; layer <= depth; layer++) {
+      const month = firstMonth + layer;
+      const record = populationAt(month);
+      const total = totalOf(record);
+      const item = document.createElement('div');
+      item.className = `tree-rail-item${month === state.month ? ' is-current' : ''}${state.treeFit ? ' is-compact' : ''}`;
+      item.style.top = `${(firstY + layer * stepY) * scale}px`;
+      item.title = `${month}개월: 전체 ${fmt(total)}마리 (어른 ${fmt(record.adults)}마리, 새끼 ${fmt(record.babies)}마리)`;
+      item.setAttribute('aria-label', item.title);
+      const label = document.createElement('span');
+      label.className = 'tree-rail-month';
+      label.textContent = `${month}개월`;
+      const count = document.createElement('strong');
+      count.textContent = `${fmt(total)}마리`;
+      const detail = document.createElement('small');
+      detail.textContent = `어른 ${fmt(record.adults)} · 새끼 ${fmt(record.babies)}`;
+      item.append(label, count, detail);
+      rail.appendChild(item);
+    }
+  }
+
+  function renderForest() {
+    const svg = byId('rabbitTree');
+    const frame = byId('treeFrame');
+    svg.replaceChildren();
+    forestOffsets = {};
+    const depth = state.treeDepth;
+    const sampleKind = state.treeView === 'single-adult' ? 'adult' : state.treeView === 'single-baby' ? 'baby' : null;
+    const populationAt = sampleKind ? month => singleRabbitRecordAt(sampleKind, month) : recordAt;
+    const roots = sampleKind ? [{ id: 1n, kind: sampleKind }] : visibleInitialRabbits();
+    if (!roots.length) {
+      const emptyHeight = 252 + depth * 115;
+      svg.setAttribute('viewBox', `0 0 900 ${emptyHeight}`);
+      svg.style.width = '900px';
+      svg.appendChild(svgEl('text', { x: 450, y: emptyHeight / 2, class: 'tree-svg-fallback' }, '처음 토끼가 없어요. 위에서 초기 마릿수를 설정해 주세요!'));
+      renderMonthRail(0, depth, 164, 115, emptyHeight, 900, populationAt);
+      byId('treeExplanation').textContent = '어른 0마리, 새끼 0마리에서 시작하면 이후에도 토끼가 생기지 않아요.';
+      lastTreeViewKey = '';
+      return;
+    }
+
+    const groups = [];
+    const allRows = Array.from({ length: depth + 1 }, () => []);
+    let cursor = 172;
+    for (const root of roots) {
+      const node = buildRabbitBranch(root.id, root.kind, 0, depth, 0, 'root', populationAt);
+      let leaves = 0;
+      function place(branch, parent = null) {
+        branch.parent = parent;
+        branch.y = 164 + branch.layer * 115;
+        allRows[branch.layer].push(branch);
+        if (branch.children.length) {
+          for (const child of branch.children) place(child, branch);
+          branch.x = (branch.children[0].x + branch.children.at(-1).x) / 2;
+        } else {
+          branch.x = cursor + leaves * 70;
+          leaves++;
+        }
+      }
+      place(node);
+      const left = cursor - 34;
+      const right = cursor + (leaves - 1) * 70 + 34;
+      groups.push({ node, left, right });
+      cursor = right + 85;
+    }
+    const width = Math.max(920, cursor + 30);
+    const height = 252 + depth * 115;
+    svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+    svg.style.width = `${width}px`;
+    renderMonthRail(0, depth, 164, 115, height, width, populationAt);
+
+    const defs = svgEl('defs');
+    const marker = svgEl('marker', { id: 'forestArrow', viewBox: '0 0 10 10', refX: 8, refY: 5, markerWidth: 5, markerHeight: 5, orient: 'auto-start-reverse' });
+    marker.appendChild(svgEl('path', { d: 'M 1 1 L 9 5 L 1 9 z', fill: '#adb6b1' }));
+    defs.appendChild(marker);
+    svg.appendChild(defs);
+
+    for (const { node, left, right } of groups) {
+      if (forestOffsets[node.kind] === undefined) forestOffsets[node.kind] = left;
+      svg.appendChild(svgEl('rect', { x: left, y: 12, width: right - left, height: height - 38, rx: 18, class: `forest-root-band ${node.kind}` }));
+      svg.appendChild(svgEl('text', { x: node.x, y: 35, 'text-anchor': 'middle', class: `forest-root-label ${node.kind}` }, `처음 ${node.kind === 'adult' ? '어른' : '새끼'} ${tag(node.id)}`));
+      svg.appendChild(svgEl('use', { href: `#rabbit-${node.kind}`, x: node.x - 31, y: 52, width: 62, height: 72 }));
+    }
+    for (let layer = 0; layer <= depth; layer++) {
+      const y = 164 + layer * 115;
+      if (layer === state.month) svg.appendChild(svgEl('rect', { x: 10, y: y - 22, width: width - 20, height: 44, rx: 12, class: 'forest-current-row' }));
+      svg.appendChild(svgEl('text', { x: 20, y: y - 7, class: `forest-month-label${layer === state.month ? ' current' : ''}` }, `${layer}개월`));
+      if (layer === 0) svg.appendChild(svgEl('text', { x: 20, y: y + 13, class: 'forest-month-note' }, '시작'));
+    }
+
+    for (const row of allRows.slice(0, -1)) {
+      for (const node of row) {
+        for (const child of node.children) {
+          const y1 = node.y + 17, y2 = child.y - 18;
+          const dy = (y2 - y1) * .52;
+          const path = `M${node.x} ${y1} C${node.x} ${y1 + dy},${child.x} ${y2 - dy},${child.x} ${y2}`;
+          svg.appendChild(svgEl('path', { d: path, class: `forest-arrow ${child.incoming}`, 'marker-end': 'url(#forestArrow)' }));
+        }
+      }
+    }
+    for (const row of allRows) {
+      for (const node of row) {
+        const group = svgEl('g', { class: 'forest-dot-group', 'data-id': node.id.toString(), 'data-month': node.layer, 'data-kind': node.kind });
+        group.appendChild(svgEl('circle', { cx: node.x, cy: node.y, r: 15, class: `forest-dot ${node.kind}${node.layer === state.month && node.id === state.selectedId ? ' is-selected' : ''}` }));
+        group.appendChild(svgEl('text', { x: node.x, y: node.y + 29, class: 'forest-dot-id', 'text-anchor': 'middle' }, shortTag(node.id)));
+        const detail = node.incoming === 'root' ? '처음부터 있던 토끼'
+          : node.incoming === 'birth' ? `어른 ${tag(node.parent.id)}가 낳은 새끼`
+          : node.incoming === 'grow' ? `새끼 ${tag(node.id)}가 번호를 유지하며 성장`
+          : `어른 ${tag(node.id)}가 계속 생존`;
+        group.appendChild(svgEl('title', {}, `${node.layer}개월 ${node.kind === 'adult' ? '어른' : '새끼'} ${tag(node.id)} · ${detail}`));
+        svg.appendChild(group);
+      }
+    }
+
+    const visibleAdults = allRows[depth].filter(node => node.kind === 'adult').length;
+    const visibleBabies = allRows[depth].length - visibleAdults;
+    const outOfRange = state.month > depth ? `현재 선택한 ${state.month}개월은 그림의 0~${depth}개월 범위 밖이에요. ` : '';
+    byId('treeExplanation').textContent = sampleKind
+      ? `비교 예시: 0개월에 ${sampleKind === 'adult' ? '어른' : '새끼'} 토끼 #1 한 마리에서 시작했어요. ${depth}개월 뒤 어른 ${visibleAdults}마리, 새끼 ${visibleBabies}마리로 늘어납니다. 흰 원(○)은 어른, 주황 원(●)은 새끼예요. 같은 번호는 성장해도 같은 토끼이고, 출산한 어른은 계속 살아 있어요. ${outOfRange}왼쪽 합계도 이 한 마리의 자손만 센 값입니다.`
+      : `0개월의 출발 토끼 ${roots.length}마리에서 각각 뻗은 가지예요. ${depth}개월 뒤 이 그림에 그려진 토끼는 어른 ${visibleAdults}마리, 새끼 ${visibleBabies}마리입니다. 흰 원(○)은 어른, 주황 원(●)은 새끼이며, 같은 번호는 성장해도 같은 토끼예요. ${outOfRange}전체 초기 토끼는 위의 숫자와 번호 범위에서 확인하세요.`;
+    const viewKey = `${state.treeView}:${state.forestPage}:${depth}:${state.treeFit}:${state.adults}:${state.babies}`;
+    if (viewKey !== lastTreeViewKey) {
+      frame.scrollLeft = 0;
+      lastTreeViewKey = viewKey;
+    }
+  }
+
+  function renderTree() {
+    const initialAdults = BigInt(state.adults);
+    const initialBabies = BigInt(state.babies);
+    byId('forestAdultCount').textContent = `${fmt(initialAdults)}마리`;
+    byId('forestBabyCount').textContent = `${fmt(initialBabies)}마리`;
+    const initialRange = (first, count) => count === 0n ? '처음 토끼 없음' : count === 1n ? tag(first) : `${tag(first)} ~ ${tag(first + count - 1n)}`;
+    byId('forestAdultRange').textContent = `번호 ${initialRange(1n, initialAdults)}`;
+    byId('forestBabyRange').textContent = `번호 ${initialRange(initialAdults + 1n, initialBabies)}`;
+    byId('forestJumpAdult').disabled = initialAdults === 0n;
+    byId('forestJumpBaby').disabled = initialBabies === 0n;
+
+    const isForest = state.treeView === 'forest';
+    const isFocus = state.treeView === 'focus';
+    const isSample = state.treeView === 'single-adult' || state.treeView === 'single-baby';
+    byId('forestHeading').closest('.forest-card').classList.toggle('is-single-sample', isSample);
+    for (const [mode, buttonId] of [['forest', 'forestModeAll'], ['single-adult', 'forestModeSingleAdult'], ['single-baby', 'forestModeSingleBaby'], ['focus', 'forestModeFocus']]) {
+      const active = state.treeView === mode;
+      const button = byId(buttonId);
+      button.classList.toggle('is-active', active);
+      button.setAttribute('aria-pressed', String(active));
+    }
+    const focusToolbar = byId('forestFocusToolbar');
+    focusToolbar.hidden = !isFocus;
+    byId('forestPages').hidden = !isForest;
+    byId('forestPageDetail').hidden = isFocus;
+    byId('forestPageDetail').classList.toggle('is-sample', isSample);
+    const pages = initialForestPageCount();
+    state.forestPage = Math.min(state.forestPage, pages - 1);
+    const visibleRoots = visibleInitialRabbits();
+    byId('forestPageLabel').textContent = `출발 토끼 묶음 ${state.forestPage + 1} / ${pages}`;
+    byId('forestPrev').disabled = state.forestPage === 0;
+    byId('forestNext').disabled = state.forestPage >= pages - 1;
+    byId('forestPageDetail').textContent = isSample
+      ? `🌱 한 마리 비교 예시 · 0개월에 ${state.treeView === 'single-adult' ? '어른' : '새끼'} 토끼 #1 한 마리만 있는 경우예요. 위 실험 설정과 별개이며, 월별 합계도 이 토끼 한 마리에서 시작해 계산해요.`
+      : `이번 그림: ${visibleRoots.length ? visibleRoots.map(root => `${root.kind === 'adult' ? '어른' : '새끼'} ${tag(root.id)}`).join(' · ') : '없음'} · 전체 처음 토끼는 ${fmt(initialAdults + initialBabies)}마리예요. 많을 때는 ‹ ›로 다른 출발 토끼를 확인하세요.`;
+    for (const button of document.querySelectorAll('[data-tree-depth]')) {
+      const active = Number(button.dataset.treeDepth) === state.treeDepth;
+      button.classList.toggle('is-active', active);
+      button.setAttribute('aria-pressed', String(active));
+    }
+    byId('treeFrame').classList.toggle('is-fit', state.treeFit);
+    byId('treeFitBtn').textContent = state.treeFit ? '큰 그림 보기' : '전체 보기';
+    byId('treeFitBtn').setAttribute('aria-pressed', String(state.treeFit));
+    if (isFocus) renderFocusTree();
+    else renderForest();
+  }
+
+  function renderFocusTree() {
+    normalizeTreeFocus();
+    const svg = byId('rabbitTree');
+    svg.replaceChildren();
+    const rootMonth = Math.max(0, state.month - 1);
+    const root = recordAt(rootMonth);
+    const id = state.treeFocusId;
+    const hasAdults = root.adults > 0n;
+    const hasBabies = root.babies > 0n;
+
+    for (const [mode, buttonId, available] of [['adult', 'treeModeAdult', hasAdults], ['baby', 'treeModeBaby', hasBabies]]) {
+      const button = byId(buttonId);
+      button.disabled = !available;
+      button.classList.toggle('is-active', state.treeMode === mode);
+      button.setAttribute('aria-pressed', String(state.treeMode === mode));
+    }
+    const range = treeRange();
+    byId('treeFocusPrev').disabled = id <= range.first;
+    byId('treeFocusNext').disabled = id >= range.last;
+    byId('treeFocusLabel').textContent = range.count ? `${state.treeMode === 'adult' ? '어른' : '새끼'} ${shortTag(id)}` : '토끼 없음';
+    byId('treeFocusLabel').title = range.count ? tag(id) : '';
+
+    for (const button of document.querySelectorAll('[data-tree-depth]')) {
+      const active = Number(button.dataset.treeDepth) === state.treeDepth;
+      button.classList.toggle('is-active', active);
+      button.setAttribute('aria-pressed', String(active));
+    }
+    const frame = byId('treeFrame');
+    frame.classList.toggle('is-fit', state.treeFit);
+    byId('treeFitBtn').textContent = state.treeFit ? '큰 그림 보기' : '전체 보기';
+    byId('treeFitBtn').setAttribute('aria-pressed', String(state.treeFit));
+
+    if (range.count === 0n) {
+      lastTreeViewKey = '';
+      const emptyHeight = 190 + state.treeDepth * 151;
+      svg.setAttribute('viewBox', `0 0 820 ${emptyHeight}`);
+      svg.style.width = '820px';
+      svg.appendChild(svgEl('text', { x: 410, y: emptyHeight / 2, class: 'tree-svg-fallback' }, '시작할 토끼가 없어요. 초기 마릿수를 바꿔 보세요!'));
+      renderMonthRail(rootMonth, state.treeDepth, 103, 151, emptyHeight, 820);
+      byId('treeExplanation').textContent = '초기 어른과 새끼 수가 모두 0마리라면 새로운 토끼가 생기지 않아요.';
+      return;
+    }
+
+    const depth = state.treeDepth;
+    const origin = buildRabbitBranch(id, state.treeMode, 0, depth, rootMonth);
+    const rows = Array.from({ length: depth + 1 }, () => []);
+    let leafCount = 0;
+    function place(node) {
+      node.y = 103 + node.layer * 151;
+      rows[node.layer].push(node);
+      if (node.children.length) {
+        node.children.forEach(child => place(child));
+        node.x = (node.children[0].x + node.children.at(-1).x) / 2;
+      } else {
+        node.x = 136 + leafCount * 148;
+        leafCount++;
+      }
+    }
+    place(origin);
+    const rawWidth = 272 + (leafCount - 1) * 148;
+    const width = Math.max(820, rawWidth);
+    const offset = (width - rawWidth) / 2;
+    for (const row of rows) for (const node of row) node.x += offset;
+    const height = 190 + depth * 151;
+    svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+    svg.style.width = `${width}px`;
+    renderMonthRail(rootMonth, depth, 103, 151, height, width);
+    for (let layer = 0; layer <= depth; layer++) {
+      const month = rootMonth + layer;
+      const caption = month === state.month ? '현재' : month < state.month ? '이전' : '미래';
+      const adults = rows[layer].filter(node => node.kind === 'adult').length;
+      const babies = rows[layer].length - adults;
+      const countText = `이 가지 어른 ${adults} · 새끼 ${babies}`;
+      svg.appendChild(svgEl('text', { x: 23, y: 30 + layer * 151, class: `tree-svg-month${caption === '현재' ? ' tree-svg-month-current' : ''}` }, `${month}개월 · ${caption}`));
+      svg.appendChild(svgEl('text', { x: 23, y: 49 + layer * 151, class: 'tree-svg-layer-count' }, countText));
+      if (layer < depth) svg.appendChild(svgEl('line', { x1: 24, y1: 158 + layer * 151, x2: width - 24, y2: 158 + layer * 151, class: 'tree-svg-divider' }));
+    }
+    for (const row of rows.slice(0, -1)) {
+      for (const node of row) for (const child of node.children) drawTreeLink(svg, node.x, node.y, child.x, child.y, child.incoming);
+    }
+    for (const row of rows) {
+      for (const node of row) {
+        const month = rootMonth + node.layer;
+        const caption = month === state.month ? '현재' : month < state.month ? '이전' : '미래';
+        const detail = { root: '출발 토끼', alive: '계속 생존', birth: '새끼 출생', grow: '어른으로 성장' }[node.incoming];
+        drawTreeNode(svg, node.x, node.y, node.kind, node.id, caption, detail, month);
+      }
+    }
+    const finalAdults = rows[depth].filter(node => node.kind === 'adult').length;
+    const finalBabies = rows[depth].length - finalAdults;
+    const initialChange = state.treeMode === 'adult'
+      ? `첫 달에 새끼 ${tag(totalOf(root) + id)}를 낳고 본인은 계속 살아 있어요.`
+      : `첫 달에는 토끼 ${tag(id)}가 번호를 유지한 채 어른으로 자라요.`;
+    byId('treeExplanation').textContent = `${rootMonth}개월의 ${state.treeMode === 'adult' ? '어른' : '새끼'} 토끼 ${tag(id)}에서 출발! ${initialChange} ${depth}단계 뒤인 ${rootMonth + depth}개월에는 이 가지에 어른 ${finalAdults}마리와 새끼 ${finalBabies}마리가 있어요. 선을 따라가면 누가 자라고 누가 누구를 낳았는지 알 수 있어요.`;
+
+    const viewKey = `${state.treeMode}:${id}:${depth}:${state.treeFit}`;
+    if (viewKey !== lastTreeViewKey) {
+      frame.scrollLeft = Math.max(0, (width - frame.clientWidth) / 2);
+      lastTreeViewKey = viewKey;
+    }
+  }
+
+  function renderChart() {
+    const svg = byId('growthChart');
+    svg.replaceChildren();
+    const W = 480, H = 246, left = 55, right = 15, top = 17, bottom = 33;
+    const cw = W - left - right, ch = H - top - bottom;
+    const maxTotal = records.reduce((acc, r) => {
+      const t = r.adults + r.babies;
+      return t > acc ? t : acc;
+    }, 0n);
+    const maxY = Math.max(1, Number(maxTotal));
+    const x = i => left + cw * (state.month === 0 ? .5 : i / state.month);
+    const y = val => top + ch - (Number(val) / maxY) * ch;
+
+    const defs = svgEl('defs');
+    const gradient = svgEl('linearGradient', { id: 'adultArea', x1: '0', y1: '0', x2: '0', y2: '1' });
+    gradient.append(svgEl('stop', { offset: '0%', 'stop-color': '#88b58f', 'stop-opacity': '.25' }), svgEl('stop', { offset: '100%', 'stop-color': '#88b58f', 'stop-opacity': '.01' }));
+    defs.append(gradient);
+    svg.append(defs);
+
+    for (let i = 0; i <= 4; i++) {
+      const value = maxY * (4 - i) / 4;
+      const yy = top + ch * i / 4;
+      svg.append(svgEl('line', { x1: left, y1: yy, x2: W - right, y2: yy, class: 'chart-grid' }));
+      const label = value >= 100000 ? compactNumber(value) : fmt(Math.round(value));
+      svg.append(svgEl('text', { x: left - 9, y: yy + 4, class: 'chart-axis-label', 'text-anchor': 'end' }, label));
+    }
+
+    const ticks = [...new Set([0, Math.round(state.month / 4), Math.round(state.month / 2), Math.round(state.month * 3 / 4), state.month])];
+    ticks.forEach(t => svg.append(svgEl('text', { x: x(t), y: H - 7, class: 'chart-month-label', 'text-anchor': 'middle' }, `${t}개월`)));
+
+    if (state.month === 0) {
+      const one = records[0];
+      svg.append(svgEl('circle', { cx: x(0), cy: y(one.adults), r: 6, fill: '#719f78', class: 'chart-last-circle' }));
+      svg.append(svgEl('circle', { cx: x(0), cy: y(one.babies), r: 6, fill: '#e9a08b', class: 'chart-last-circle' }));
+    } else {
+      const ptsAdult = records.map((r, i) => [x(i), y(r.adults)]);
+      const ptsBaby = records.map((r, i) => [x(i), y(r.babies)]);
+      const pointsToPath = points => points.map((p, i) => `${i ? 'L' : 'M'}${p[0].toFixed(2)},${p[1].toFixed(2)}`).join(' ');
+      const adultPath = pointsToPath(ptsAdult);
+      const base = top + ch;
+      const area = `${adultPath} L${x(state.month)},${base} L${x(0)},${base} Z`;
+      svg.append(svgEl('path', { d: area, fill: 'url(#adultArea)' }));
+      svg.append(svgEl('path', { d: adultPath, class: 'chart-line-adult' }));
+      svg.append(svgEl('path', { d: pointsToPath(ptsBaby), class: 'chart-line-baby' }));
+      svg.append(svgEl('circle', { cx: x(state.month), cy: ptsAdult.at(-1)[1], r: 5.7, fill: '#719f78', class: 'chart-last-circle' }));
+      svg.append(svgEl('circle', { cx: x(state.month), cy: ptsBaby.at(-1)[1], r: 5.7, fill: '#e9a08b', class: 'chart-last-circle' }));
+    }
+    byId('chartCaption').textContent = `0개월부터 ${fmt(state.month)}개월까지의 변화`;
+  }
+
+  function compactNumber(num) {
+    const abs = Math.abs(num);
+    if (abs >= 1e12) return `${(num / 1e12).toPrecision(2)}조`;
+    if (abs >= 1e8) return `${(num / 1e8).toPrecision(2)}억`;
+    if (abs >= 1e4) return `${(num / 1e4).toPrecision(2)}만`;
+    return fmt(Math.round(num));
+  }
+
+  function renderTable() {
+    const body = byId('monthTable');
+    const scroll = byId('tableScroll');
+    body.replaceChildren();
+    const fragment = document.createDocumentFragment();
+    records.forEach(record => {
+      const tr = document.createElement('tr');
+      if (record.month === state.month) tr.className = 'is-current';
+      tr.tabIndex = 0;
+      tr.setAttribute('aria-label', `${record.month}개월로 이동`);
+      const cells = [`${record.month}개월`, fmt(record.adults), fmt(record.babies), fmt(record.adults + record.babies)];
+      cells.forEach(value => {
+        const td = document.createElement('td');
+        td.textContent = value;
+        tr.appendChild(td);
+      });
+      tr.addEventListener('click', () => setMonth(record.month));
+      tr.addEventListener('keydown', event => {
+        if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); setMonth(record.month); }
+      });
+      fragment.appendChild(tr);
+    });
+    body.appendChild(fragment);
+    // Keep the highlighted current month inside the table viewport.
+    scroll.scrollTop = Math.max(0, scroll.scrollHeight - scroll.clientHeight);
+  }
+
+  function render() {
+    records = calculateRecords();
+    const current = records[state.month];
+    const total = current.adults + current.babies;
+    if (state.selectedId !== null && state.selectedId > total) {
+      state.selectedId = null;
+      byId('rabbitLookup').value = '';
+    }
+    byId('currentMonth').textContent = fmt(state.month);
+    byId('gardenMonth').textContent = fmt(state.month);
+    byId('adultCount').textContent = fmt(current.adults);
+    byId('babyCount').textContent = fmt(current.babies);
+    byId('totalCount').textContent = fmt(total);
+    byId('adultGardenCount').textContent = `${fmt(current.adults)}마리`;
+    byId('babyGardenCount').textContent = `${fmt(current.babies)}마리`;
+    byId('prevMonth').disabled = state.month <= 0;
+    byId('nextMonth').disabled = state.month >= LIMIT_MONTH;
+    // Keep a field editable while the user clears or types a new number.
+    if (document.activeElement !== fields.adults) fields.adults.value = state.adults;
+    if (document.activeElement !== fields.babies) fields.babies.value = state.babies;
+    if (document.activeElement !== fields.month) fields.month.value = state.month;
+
+    renderGarden('adultGarden', 'adult', current.adults, MAX_ADULT_PICTURES, 1n);
+    renderGarden('babyGarden', 'baby', current.babies, MAX_BABY_PICTURES, current.adults + 1n);
+    const sampled = current.adults > BigInt(MAX_ADULT_PICTURES) || current.babies > BigInt(MAX_BABY_PICTURES);
+    byId('gardenNotice').textContent = sampled
+      ? '토끼가 많아서 종류별 앞·뒤 24마리만 표시했어요. 번호를 누르거나 아래에서 검색하면 관계를 추적할 수 있어요.'
+      : '그림 하나가 실제 토끼 한 마리예요. 토끼 아래 번호를 눌러 성장과 출산 관계를 알아보세요.';
+    if (state.month === 0) {
+      byId('monthExplainer').textContent = `현재는 시작 시점이에요. 어른 ${fmt(current.adults)}마리, 새끼 ${fmt(current.babies)}마리에서 출발해요.`;
+    } else {
+      const prev = records[state.month - 1];
+      byId('monthExplainer').textContent = `지난달 새끼 ${fmt(prev.babies)}마리가 어른이 되고, 지난달 어른 ${fmt(prev.adults)}마리가 새끼를 한 마리씩 낳았어요.`;
+    }
+    renderLineage();
+    renderTree();
+    renderChart();
+    renderTable();
+  }
+
+  function stop() {
+    if (state.timer !== null) clearInterval(state.timer);
+    state.timer = null;
+    state.playing = false;
+    byId('playIcon').textContent = '▶';
+    byId('playLabel').textContent = '자동 재생';
+  }
+
+  function setMonth(month, fromPlay = false) {
+    const next = safeInt(month, 0, LIMIT_MONTH, state.month);
+    if (!fromPlay) stop();
+    state.month = next;
+    render();
+    if (fromPlay && state.month === LIMIT_MONTH) stop();
+  }
+
+  function setStart() {
+    stop();
+    if (fields.adults.value.trim() === '' || fields.babies.value.trim() === '') return;
+    const adults = safeInt(fields.adults.value, 0, LIMIT_START, state.adults);
+    const babies = safeInt(fields.babies.value, 0, LIMIT_START, state.babies);
+    if (state.adults !== adults || state.babies !== babies) {
+      state.forestPage = 0;
+      state.treeView = 'forest';
+    }
+    state.adults = adults;
+    state.babies = babies;
+    state.selectedId = null;
+    byId('rabbitLookup').value = '';
+    render();
+  }
+
+  function reset() {
+    stop();
+    state.adults = 1;
+    state.babies = 0;
+    state.month = 6;
+    state.selectedId = null;
+    state.treeView = 'forest';
+    state.forestPage = 0;
+    state.treeMode = 'adult';
+    state.treeFocusId = 1n;
+    byId('rabbitLookup').value = '';
+    byId('lookupMessage').textContent = '';
+    render();
+  }
+
+  function lookupRabbit() {
+    const raw = byId('rabbitLookup').value.trim().replaceAll(',', '');
+    const current = records[state.month];
+    if (!/^\d+$/.test(raw)) {
+      byId('lookupMessage').textContent = '1 이상의 토끼 번호를 숫자로 입력해 주세요.';
+      return;
+    }
+    const id = BigInt(raw);
+    if (id < 1n || id > totalOf(current)) {
+      byId('lookupMessage').textContent = `이번 달에는 1번부터 ${fmt(totalOf(current))}번까지의 토끼가 있어요.`;
+      return;
+    }
+    selectRabbit(id);
+  }
+
+  fields.adults.addEventListener('input', setStart);
+  fields.babies.addEventListener('input', setStart);
+  fields.adults.addEventListener('blur', () => { setStart(); fields.adults.value = state.adults; });
+  fields.babies.addEventListener('blur', () => { setStart(); fields.babies.value = state.babies; });
+  fields.month.addEventListener('input', () => {
+    if (fields.month.value.trim() !== '') setMonth(fields.month.value);
+  });
+  fields.month.addEventListener('blur', () => {
+    if (fields.month.value.trim() !== '') setMonth(fields.month.value);
+    fields.month.value = state.month;
+  });
+  fields.month.addEventListener('keydown', e => { if (e.key === 'Enter') { e.target.blur(); } });
+  byId('prevMonth').addEventListener('click', () => setMonth(state.month - 1));
+  byId('nextMonth').addEventListener('click', () => setMonth(state.month + 1));
+  byId('resetBtn').addEventListener('click', reset);
+  byId('challengeBtn').addEventListener('click', () => { reset(); byId('initialAdults').focus(); });
+  byId('lookupBtn').addEventListener('click', lookupRabbit);
+  byId('rabbitLookup').addEventListener('keydown', e => { if (e.key === 'Enter') lookupRabbit(); });
+  byId('treeModeAdult').addEventListener('click', () => { state.treeMode = 'adult'; state.treeFocusId = 1n; renderTree(); });
+  byId('treeModeBaby').addEventListener('click', () => { state.treeMode = 'baby'; state.treeFocusId = treeSource().adults + 1n; renderTree(); });
+  byId('forestModeAll').addEventListener('click', () => { state.treeView = 'forest'; renderTree(); });
+  byId('forestModeSingleAdult').addEventListener('click', () => { state.treeView = 'single-adult'; renderTree(); });
+  byId('forestModeSingleBaby').addEventListener('click', () => { state.treeView = 'single-baby'; renderTree(); });
+  byId('forestModeFocus').addEventListener('click', () => { state.treeView = 'focus'; renderTree(); });
+  byId('forestPrev').addEventListener('click', () => { state.forestPage = Math.max(0, state.forestPage - 1); renderTree(); });
+  byId('forestNext').addEventListener('click', () => { state.forestPage = Math.min(initialForestPageCount() - 1, state.forestPage + 1); renderTree(); });
+  function jumpToInitial(kind) {
+    const count = kind === 'adult' ? state.adults : state.babies;
+    if (!count) return;
+    state.treeView = 'forest';
+    if (!visibleInitialRabbits().some(root => root.kind === kind)) state.forestPage = 0;
+    renderTree();
+    const frame = byId('treeFrame');
+    frame.scrollIntoView({ behavior: 'auto', block: 'center', inline: 'nearest' });
+    frame.scrollLeft = Math.max(0, (forestOffsets[kind] || 0) - 145);
+  }
+  byId('forestJumpBaby').addEventListener('click', () => jumpToInitial('baby'));
+  byId('forestJumpAdult').addEventListener('click', () => jumpToInitial('adult'));
+  for (const button of document.querySelectorAll('[data-tree-depth]')) {
+    button.addEventListener('click', () => { state.treeDepth = Number(button.dataset.treeDepth); renderTree(); });
+  }
+  byId('treeFitBtn').addEventListener('click', () => { state.treeFit = !state.treeFit; renderTree(); });
+  byId('treePopupBtn').addEventListener('click', openTreePopup);
+  byId('rabbitTree').addEventListener('click', () => { if (!isTreePopup) openTreePopup(); });
+  byId('closeTreePopup').addEventListener('click', () => { window.close(); });
+  window.addEventListener('resize', renderTree);
+  byId('treeFocusPrev').addEventListener('click', () => { state.treeFocusId -= 1n; renderTree(); });
+  byId('treeFocusNext').addEventListener('click', () => { state.treeFocusId += 1n; renderTree(); });
+  byId('playBtn').addEventListener('click', () => {
+    if (state.playing) { stop(); return; }
+    if (state.month >= LIMIT_MONTH) setMonth(0);
+    state.playing = true;
+    byId('playIcon').textContent = 'Ⅱ';
+    byId('playLabel').textContent = '일시정지';
+    state.timer = setInterval(() => setMonth(state.month + 1, true), 1100);
+  });
+
+  byId('downloadBtn').addEventListener('click', () => {
+    const rows = ['개월,어른 토끼,새끼 토끼,전체 토끼', ...records.map(r => `${r.month},${r.adults},${r.babies},${r.adults + r.babies}`)];
+    const blob = new Blob(['\uFEFF', rows.join('\r\n')], { type: 'text/csv;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `피보나치_토끼_${state.month}개월.csv`;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  });
+
+  render();
+})();
+
+  </script>
+</body>
+</html>
